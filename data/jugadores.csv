@@ -1,0 +1,301 @@
+nombre,equipo,posicion,edad,nacionalidad,partidos_jugados,partidos_titular,minutos,goles,asistencias,tarjetas_amarillas,tarjetas_rojas
+David Raya,Arsenal,Portero,30,Espana,38,38,3420,0,0,2,0
+William Saliba,Arsenal,Defensa,24,Francia,33,33,2874,2,1,3,0
+Gabriel Magalhaes,Arsenal,Defensa,28,Brasil,31,31,2662,5,1,6,0
+Jurrien Timber,Arsenal,Defensa,24,Paises Bajos,32,30,2611,3,4,5,0
+Riccardo Calafiori,Arsenal,Defensa,23,Italia,25,21,1911,2,2,4,0
+Piero Hincapie,Arsenal,Defensa,24,Ecuador,22,14,1386,1,1,3,0
+Declan Rice,Arsenal,Mediocampista,27,Inglaterra,37,37,3024,5,7,5,0
+Martin Zubimendi,Arsenal,Mediocampista,26,Espana,36,34,2837,5,2,6,0
+Martin Odegaard,Arsenal,Mediocampista,27,Noruega,26,21,1852,2,6,2,0
+Eberechi Eze,Arsenal,Mediocampista,27,Inglaterra,35,25,2282,7,5,2,0
+Mikel Merino,Arsenal,Mediocampista,29,Espana,25,12,1231,4,1,5,0
+Bukayo Saka,Arsenal,Delantero,24,Inglaterra,33,30,2429,9,8,2,0
+Gabriel Martinelli,Arsenal,Delantero,24,Brasil,31,13,1436,6,3,2,0
+Leandro Trossard,Arsenal,Delantero,31,Belgica,34,22,1992,7,5,3,0
+Viktor Gyokeres,Arsenal,Delantero,27,Suecia,35,31,2520,14,3,3,0
+Emiliano Martinez,Aston Villa,Portero,33,Argentina,34,34,3060,0,0,5,0
+Ezri Konsa,Aston Villa,Defensa,28,Inglaterra,35,35,3064,1,1,4,0
+Pau Torres,Aston Villa,Defensa,28,Espana,28,26,2336,1,0,3,0
+Matty Cash,Aston Villa,Defensa,28,Polonia,33,31,2748,3,3,7,0
+Lucas Digne,Aston Villa,Defensa,32,Francia,30,26,2353,1,5,5,0
+Ian Maatsen,Aston Villa,Defensa,23,Paises Bajos,24,12,1297,0,2,2,0
+Victor Lindelof,Aston Villa,Defensa,31,Suecia,20,12,1182,0,0,2,0
+Amadou Onana,Aston Villa,Mediocampista,24,Belgica,30,26,2247,3,1,6,0
+Boubacar Kamara,Aston Villa,Mediocampista,26,Francia,31,29,2423,1,2,7,0
+Youri Tielemans,Aston Villa,Mediocampista,28,Belgica,34,32,2666,4,6,5,0
+John McGinn,Aston Villa,Mediocampista,31,Escocia,34,30,2535,6,4,6,0
+Morgan Rogers,Aston Villa,Mediocampista,23,Inglaterra,37,36,2988,10,7,4,0
+Emiliano Buendia,Aston Villa,Mediocampista,29,Argentina,30,13,1386,5,3,3,0
+Ollie Watkins,Aston Villa,Delantero,30,Inglaterra,36,31,2543,12,5,2,0
+Jadon Sancho,Aston Villa,Delantero,25,Inglaterra,24,9,1067,2,3,1,0
+Djordje Petrovic,Bournemouth,Portero,26,Serbia,38,38,3420,0,0,2,0
+Marcos Senesi,Bournemouth,Defensa,28,Argentina,35,35,3050,2,3,8,0
+Adam Smith,Bournemouth,Defensa,34,Inglaterra,26,19,1782,0,1,5,0
+Alex Jimenez,Bournemouth,Defensa,20,Espana,29,24,2162,1,2,4,0
+Adrien Truffert,Bournemouth,Defensa,24,Francia,36,36,3111,1,3,4,0
+Bafode Diakite,Bournemouth,Defensa,24,Francia,32,30,2622,2,0,5,1
+James Hill,Bournemouth,Defensa,24,Inglaterra,20,11,1127,0,1,3,0
+Tyler Adams,Bournemouth,Mediocampista,26,Estados Unidos,32,31,2597,1,2,9,0
+Lewis Cook,Bournemouth,Mediocampista,28,Inglaterra,30,26,2229,0,3,8,0
+Alex Scott,Bournemouth,Mediocampista,22,Inglaterra,33,24,2177,3,3,4,0
+Ryan Christie,Bournemouth,Mediocampista,30,Escocia,28,15,1517,1,2,5,0
+Marcus Tavernier,Bournemouth,Mediocampista,26,Inglaterra,31,25,2192,4,6,3,0
+Justin Kluivert,Bournemouth,Delantero,26,Paises Bajos,30,24,2029,6,4,3,0
+Evanilson,Bournemouth,Delantero,26,Brasil,33,28,2306,8,3,4,0
+Eli Junior Kroupi,Bournemouth,Delantero,19,Francia,28,9,1152,7,1,1,0
+Caoimhin Kelleher,Brentford,Portero,27,Irlanda,38,38,3420,0,0,1,0
+Nathan Collins,Brentford,Defensa,24,Irlanda,37,37,3241,2,1,4,0
+Kristoffer Ajer,Brentford,Defensa,27,Noruega,30,27,2384,1,2,5,0
+Sepp van den Berg,Brentford,Defensa,24,Paises Bajos,31,29,2589,2,0,4,0
+Michael Kayode,Brentford,Defensa,21,Italia,33,31,2729,1,3,6,0
+Ethan Pinnock,Brentford,Defensa,32,Jamaica,18,9,958,0,0,2,0
+Rico Henry,Brentford,Defensa,28,Inglaterra,16,10,1006,0,1,2,0
+Keane Lewis-Potter,Brentford,Defensa,24,Inglaterra,34,28,2530,2,3,3,0
+Mikkel Damsgaard,Brentford,Mediocampista,25,Dinamarca,36,33,2808,3,7,2,0
+Vitaly Janelt,Brentford,Mediocampista,27,Alemania,32,22,2030,1,2,6,0
+Yehor Yarmoliuk,Brentford,Mediocampista,21,Ucrania,30,21,1921,1,1,7,0
+Jordan Henderson,Brentford,Mediocampista,35,Inglaterra,31,29,2413,1,3,6,0
+Kevin Schade,Brentford,Delantero,24,Alemania,36,33,2672,8,4,3,0
+Igor Thiago,Brentford,Delantero,24,Brasil,36,35,2777,19,3,4,0
+Dango Ouattara,Brentford,Delantero,23,Burkina Faso,32,22,1954,5,5,3,0
+Bart Verbruggen,Brighton,Portero,23,Paises Bajos,37,37,3330,0,0,2,0
+Lewis Dunk,Brighton,Defensa,34,Inglaterra,31,31,2716,1,1,6,0
+Jan Paul van Hecke,Brighton,Defensa,25,Paises Bajos,34,34,2963,1,1,7,0
+Joel Veltman,Brighton,Defensa,33,Paises Bajos,20,13,1250,0,1,3,0
+Maxim De Cuyper,Brighton,Defensa,25,Belgica,30,25,2312,2,3,3,0
+Ferdi Kadioglu,Brighton,Defensa,26,Turquia,22,19,1715,1,2,2,0
+Carlos Baleba,Brighton,Mediocampista,21,Camerun,34,31,2642,1,1,7,0
+Yasin Ayari,Brighton,Mediocampista,22,Suecia,33,27,2378,3,2,5,0
+Mats Wieffer,Brighton,Mediocampista,26,Paises Bajos,28,20,1783,1,2,4,0
+Jack Hinshelwood,Brighton,Mediocampista,20,Inglaterra,25,15,1426,2,1,3,0
+James Milner,Brighton,Mediocampista,39,Inglaterra,17,4,570,1,1,1,0
+Georginio Rutter,Brighton,Delantero,23,Francia,32,20,1854,5,4,2,0
+Kaoru Mitoma,Brighton,Delantero,28,Japon,29,24,1969,6,3,2,0
+Yankuba Minteh,Brighton,Delantero,21,Gambia,33,25,2150,5,6,3,0
+Danny Welbeck,Brighton,Delantero,35,Inglaterra,32,23,1976,10,2,2,0
+Martin Dubravka,Burnley,Portero,36,Eslovaquia,38,38,3420,0,0,3,0
+Kyle Walker,Burnley,Defensa,35,Inglaterra,33,33,2910,0,2,5,0
+Maxime Esteve,Burnley,Defensa,23,Francia,36,36,3138,1,0,6,0
+Bashir Humphreys,Burnley,Defensa,22,Inglaterra,25,21,1926,1,0,4,0
+Quilindschy Hartman,Burnley,Defensa,24,Paises Bajos,26,21,1936,1,2,3,0
+Lucas Pires,Burnley,Defensa,24,Brasil,24,16,1591,0,2,3,0
+Joe Worrall,Burnley,Defensa,28,Inglaterra,20,15,1369,0,0,4,1
+Josh Cullen,Burnley,Mediocampista,29,Irlanda,34,33,2762,1,2,8,0
+Lesley Ugochukwu,Burnley,Mediocampista,21,Francia,33,29,2499,2,1,7,1
+Hannibal Mejbri,Burnley,Mediocampista,22,Tunez,29,20,1842,2,3,9,0
+Florentino Luis,Burnley,Mediocampista,26,Portugal,30,26,2219,0,1,6,0
+Jaidon Anthony,Burnley,Delantero,26,Inglaterra,36,32,2614,7,4,2,0
+Lyle Foster,Burnley,Delantero,25,Sudafrica,31,24,1998,6,1,2,0
+Zian Flemming,Burnley,Delantero,27,Paises Bajos,32,19,1762,8,2,4,0
+Armando Broja,Burnley,Delantero,24,Albania,24,13,1233,4,1,2,0
+Robert Sanchez,Chelsea,Portero,28,Espana,35,35,3150,0,0,3,1
+Reece James,Chelsea,Defensa,26,Inglaterra,29,26,2322,2,4,4,0
+Marc Cucurella,Chelsea,Defensa,27,Espana,34,33,2902,1,4,8,0
+Wesley Fofana,Chelsea,Defensa,25,Francia,22,19,1710,1,0,3,0
+Trevoh Chalobah,Chelsea,Defensa,26,Inglaterra,33,31,2770,3,1,5,1
+Malo Gusto,Chelsea,Defensa,22,Francia,30,20,1964,1,4,4,0
+Jorrel Hato,Chelsea,Defensa,19,Paises Bajos,21,10,1128,0,1,2,0
+Moises Caicedo,Chelsea,Mediocampista,24,Ecuador,35,35,2870,4,3,11,0
+Enzo Fernandez,Chelsea,Mediocampista,24,Argentina,35,33,2781,7,5,6,0
+Cole Palmer,Chelsea,Mediocampista,23,Inglaterra,24,20,1740,9,5,3,0
+Pedro Neto,Chelsea,Delantero,25,Portugal,35,28,2351,5,6,4,0
+Joao Pedro,Chelsea,Delantero,24,Brasil,35,31,2506,12,6,5,1
+Liam Delap,Chelsea,Delantero,22,Inglaterra,22,11,1074,4,1,4,0
+Estevao,Chelsea,Delantero,18,Brasil,31,16,1617,6,3,2,0
+Alejandro Garnacho,Chelsea,Delantero,21,Argentina,29,17,1596,4,4,3,0
+Dean Henderson,Crystal Palace,Portero,28,Inglaterra,37,37,3330,0,0,2,0
+Daniel Munoz,Crystal Palace,Defensa,29,Colombia,33,32,2788,3,5,9,0
+Maxence Lacroix,Crystal Palace,Defensa,25,Francia,37,37,3180,2,0,5,0
+Chris Richards,Crystal Palace,Defensa,25,Estados Unidos,30,26,2359,2,1,5,0
+Tyrick Mitchell,Crystal Palace,Defensa,26,Inglaterra,36,36,3114,0,3,6,0
+Nathaniel Clyne,Crystal Palace,Defensa,34,Inglaterra,17,8,914,0,0,2,0
+Jaydee Canvot,Crystal Palace,Defensa,19,Francia,15,6,692,0,0,2,0
+Adam Wharton,Crystal Palace,Mediocampista,21,Inglaterra,32,30,2470,1,5,6,0
+Jefferson Lerma,Crystal Palace,Mediocampista,31,Colombia,33,27,2301,1,1,8,0
+Daichi Kamada,Crystal Palace,Mediocampista,29,Japon,30,25,2166,2,2,4,0
+Will Hughes,Crystal Palace,Mediocampista,30,Inglaterra,29,17,1686,1,2,6,0
+Ismaila Sarr,Crystal Palace,Delantero,27,Senegal,32,28,2242,9,4,3,0
+Jean-Philippe Mateta,Crystal Palace,Delantero,28,Francia,36,33,2627,13,2,3,0
+Yeremy Pino,Crystal Palace,Delantero,23,Espana,33,25,2106,4,6,3,0
+Eddie Nketiah,Crystal Palace,Delantero,26,Inglaterra,24,6,824,3,1,1,0
+Jordan Pickford,Everton,Portero,31,Inglaterra,38,38,3420,0,0,4,0
+James Tarkowski,Everton,Defensa,33,Inglaterra,36,36,3121,2,1,8,0
+Jarrad Branthwaite,Everton,Defensa,23,Inglaterra,22,19,1745,0,0,3,0
+Michael Keane,Everton,Defensa,32,Inglaterra,30,27,2442,2,0,5,0
+Vitalii Mykolenko,Everton,Defensa,26,Ucrania,34,33,2857,0,2,5,0
+Jake O'Brien,Everton,Defensa,24,Irlanda,35,33,2924,3,1,6,0
+Nathan Patterson,Everton,Defensa,24,Escocia,17,9,958,0,1,2,0
+Idrissa Gueye,Everton,Mediocampista,36,Senegal,31,29,2427,2,1,7,1
+James Garner,Everton,Mediocampista,24,Inglaterra,36,35,2852,1,5,7,0
+Kiernan Dewsbury-Hall,Everton,Mediocampista,27,Inglaterra,32,25,2159,4,3,4,0
+Carlos Alcaraz,Everton,Mediocampista,23,Argentina,21,8,939,1,1,4,0
+Jack Grealish,Everton,Mediocampista,30,Inglaterra,30,26,2185,3,7,3,0
+Iliman Ndiaye,Everton,Delantero,25,Senegal,35,33,2599,8,4,3,0
+Beto,Everton,Delantero,27,Guinea-Bisau,30,18,1698,6,1,3,0
+Thierno Barry,Everton,Delantero,23,Francia,29,16,1552,4,2,2,0
+Bernd Leno,Fulham,Portero,33,Alemania,38,38,3420,0,0,2,0
+Kenny Tete,Fulham,Defensa,30,Paises Bajos,27,24,2168,0,2,3,0
+Joachim Andersen,Fulham,Defensa,29,Dinamarca,35,35,3013,1,0,6,0
+Calvin Bassey,Fulham,Defensa,26,Nigeria,33,32,2801,1,1,8,0
+Antonee Robinson,Fulham,Defensa,28,Estados Unidos,26,23,2070,0,4,2,0
+Issa Diop,Fulham,Defensa,28,Francia,18,11,1075,1,0,2,0
+Timothy Castagne,Fulham,Defensa,30,Belgica,25,17,1648,0,1,3,0
+Sander Berge,Fulham,Mediocampista,27,Noruega,34,31,2634,1,2,5,0
+Sasa Lukic,Fulham,Mediocampista,29,Serbia,30,24,2091,1,1,7,0
+Emile Smith Rowe,Fulham,Mediocampista,25,Inglaterra,31,23,2042,4,3,2,0
+Alex Iwobi,Fulham,Mediocampista,29,Nigeria,35,32,2688,5,6,2,0
+Harry Wilson,Fulham,Delantero,28,Gales,34,27,2272,8,5,2,0
+Raul Jimenez,Fulham,Delantero,34,Mexico,34,26,2188,9,3,4,0
+Rodrigo Muniz,Fulham,Delantero,24,Brasil,25,10,1144,5,1,2,0
+Samuel Chukwueze,Fulham,Delantero,26,Nigeria,27,14,1401,3,3,2,0
+Lucas Perri,Leeds United,Portero,28,Brasil,36,36,3240,0,0,2,0
+Jayden Bogle,Leeds United,Defensa,25,Inglaterra,34,32,2855,1,3,6,0
+Pascal Struijk,Leeds United,Defensa,26,Paises Bajos,30,26,2382,2,0,5,0
+Joe Rodon,Leeds United,Defensa,28,Gales,36,36,3114,1,0,5,0
+Jaka Bijol,Leeds United,Defensa,26,Eslovenia,33,31,2709,1,0,6,1
+Gabriel Gudmundsson,Leeds United,Defensa,26,Suecia,32,29,2581,0,3,3,0
+James Justin,Leeds United,Defensa,27,Inglaterra,27,19,1804,1,2,4,0
+Ethan Ampadu,Leeds United,Mediocampista,25,Gales,33,32,2680,1,1,9,0
+Anton Stach,Leeds United,Mediocampista,27,Alemania,34,31,2636,4,4,7,0
+Sean Longstaff,Leeds United,Mediocampista,28,Inglaterra,25,13,1337,1,1,4,0
+Brenden Aaronson,Leeds United,Mediocampista,25,Estados Unidos,35,28,2431,4,4,3,0
+Ao Tanaka,Leeds United,Mediocampista,27,Japon,30,20,1881,3,2,4,0
+Daniel James,Leeds United,Delantero,28,Gales,30,21,1860,4,4,2,0
+Dominic Calvert-Lewin,Leeds United,Delantero,28,Inglaterra,34,30,2460,11,2,3,0
+Noah Okafor,Leeds United,Delantero,25,Suiza,29,22,1890,6,3,2,0
+Alisson Becker,Liverpool,Portero,33,Brasil,30,30,2700,0,0,1,0
+Virgil van Dijk,Liverpool,Defensa,34,Paises Bajos,37,37,3198,3,1,3,0
+Ibrahima Konate,Liverpool,Defensa,26,Francia,34,33,2913,1,1,6,0
+Milos Kerkez,Liverpool,Defensa,22,Hungria,33,29,2597,0,3,5,0
+Jeremie Frimpong,Liverpool,Defensa,25,Paises Bajos,24,16,1544,1,3,2,0
+Conor Bradley,Liverpool,Defensa,22,Irlanda del Norte,25,19,1770,1,2,5,0
+Ryan Gravenberch,Liverpool,Mediocampista,23,Paises Bajos,35,34,2799,4,3,4,0
+Alexis Mac Allister,Liverpool,Mediocampista,27,Argentina,33,29,2423,3,3,7,0
+Dominik Szoboszlai,Liverpool,Mediocampista,25,Hungria,37,36,2970,6,6,6,0
+Florian Wirtz,Liverpool,Mediocampista,22,Alemania,33,28,2437,5,6,2,0
+Curtis Jones,Liverpool,Mediocampista,24,Inglaterra,28,17,1628,2,2,3,0
+Mohamed Salah,Liverpool,Delantero,33,Egipto,32,29,2293,11,7,1,0
+Hugo Ekitike,Liverpool,Delantero,23,Francia,35,28,2309,13,4,3,0
+Alexander Isak,Liverpool,Delantero,26,Suecia,22,15,1328,6,1,1,0
+Cody Gakpo,Liverpool,Delantero,26,Paises Bajos,35,29,2392,9,4,2,0
+Gianluigi Donnarumma,Manchester City,Portero,26,Italia,34,34,3060,0,0,2,0
+Ruben Dias,Manchester City,Defensa,28,Portugal,30,29,2537,1,0,4,0
+Josko Gvardiol,Manchester City,Defensa,23,Croacia,28,27,2407,2,1,4,0
+Abdukodir Khusanov,Manchester City,Defensa,21,Uzbekistan,26,20,1834,0,1,3,0
+Rayan Ait-Nouri,Manchester City,Defensa,24,Argelia,22,15,1423,1,2,2,0
+Matheus Nunes,Manchester City,Defensa,27,Portugal,32,27,2474,1,4,5,0
+Nico O'Reilly,Manchester City,Defensa,20,Inglaterra,33,28,2530,3,4,3,0
+Rodri,Manchester City,Mediocampista,29,Espana,22,16,1424,1,1,5,0
+Tijjani Reijnders,Manchester City,Mediocampista,27,Paises Bajos,34,28,2441,5,5,3,0
+Bernardo Silva,Manchester City,Mediocampista,31,Portugal,35,27,2402,2,4,5,0
+Phil Foden,Manchester City,Mediocampista,25,Inglaterra,34,29,2473,10,6,1,0
+Rayan Cherki,Manchester City,Mediocampista,22,Francia,30,19,1752,5,9,2,0
+Jeremy Doku,Manchester City,Delantero,23,Belgica,31,24,1988,4,7,2,0
+Erling Haaland,Manchester City,Delantero,25,Noruega,36,35,2738,27,4,2,0
+Omar Marmoush,Manchester City,Delantero,26,Egipto,22,10,1064,4,2,1,0
+Senne Lammens,Manchester United,Portero,23,Belgica,32,32,2880,0,0,1,0
+Matthijs de Ligt,Manchester United,Defensa,26,Paises Bajos,27,26,2285,2,0,5,0
+Harry Maguire,Manchester United,Defensa,32,Inglaterra,26,20,1869,3,0,4,0
+Leny Yoro,Manchester United,Defensa,20,Francia,28,24,2183,0,0,4,0
+Luke Shaw,Manchester United,Defensa,30,Inglaterra,30,28,2462,0,2,4,0
+Diogo Dalot,Manchester United,Defensa,26,Portugal,32,26,2400,1,2,6,0
+Noussair Mazraoui,Manchester United,Defensa,28,Marruecos,20,13,1254,0,1,2,0
+Patrick Dorgu,Manchester United,Defensa,21,Dinamarca,31,25,2303,2,3,5,0
+Bruno Fernandes,Manchester United,Mediocampista,31,Portugal,35,35,2840,8,10,7,0
+Casemiro,Manchester United,Mediocampista,33,Brasil,32,28,2349,4,1,10,0
+Kobbie Mainoo,Manchester United,Mediocampista,20,Inglaterra,20,7,823,0,1,2,0
+Amad Diallo,Manchester United,Delantero,23,Costa de Marfil,33,27,2226,4,5,2,0
+Matheus Cunha,Manchester United,Delantero,26,Brasil,33,30,2405,8,4,6,0
+Bryan Mbeumo,Manchester United,Delantero,26,Camerun,32,30,2363,12,5,2,0
+Benjamin Sesko,Manchester United,Delantero,22,Eslovenia,30,21,1853,10,2,3,0
+Nick Pope,Newcastle,Portero,33,Inglaterra,33,33,2970,0,0,1,0
+Kieran Trippier,Newcastle,Defensa,35,Inglaterra,25,20,1823,0,4,4,0
+Fabian Schar,Newcastle,Defensa,34,Suiza,26,25,2208,2,1,7,0
+Sven Botman,Newcastle,Defensa,25,Paises Bajos,22,19,1673,1,0,3,0
+Dan Burn,Newcastle,Defensa,33,Inglaterra,32,30,2676,1,1,5,0
+Malick Thiaw,Newcastle,Defensa,24,Alemania,33,31,2697,2,0,4,0
+Tino Livramento,Newcastle,Defensa,23,Inglaterra,23,20,1801,0,2,2,0
+Lewis Hall,Newcastle,Defensa,21,Inglaterra,25,22,1976,0,3,3,0
+Bruno Guimaraes,Newcastle,Mediocampista,28,Brasil,35,35,2848,6,5,9,0
+Sandro Tonali,Newcastle,Mediocampista,25,Italia,35,33,2755,3,4,6,0
+Joelinton,Newcastle,Mediocampista,29,Brasil,29,25,2149,3,2,8,0
+Anthony Gordon,Newcastle,Delantero,24,Inglaterra,33,29,2319,8,5,4,0
+Harvey Barnes,Newcastle,Delantero,28,Inglaterra,34,24,2095,8,4,1,0
+Nick Woltemade,Newcastle,Delantero,23,Alemania,33,28,2309,11,3,3,0
+Anthony Elanga,Newcastle,Delantero,23,Suecia,32,20,1841,3,5,2,0
+Matz Sels,Nottingham Forest,Portero,33,Belgica,38,38,3420,0,0,2,0
+Murillo,Nottingham Forest,Defensa,23,Brasil,34,34,2929,1,1,8,0
+Nikola Milenkovic,Nottingham Forest,Defensa,28,Serbia,35,35,3064,3,0,6,0
+Neco Williams,Nottingham Forest,Defensa,24,Gales,34,32,2824,1,3,7,0
+Ola Aina,Nottingham Forest,Defensa,29,Nigeria,18,14,1303,0,1,2,0
+Nicolo Savona,Nottingham Forest,Defensa,22,Italia,26,19,1798,1,1,4,0
+Morato,Nottingham Forest,Defensa,24,Brasil,20,12,1223,0,0,3,0
+Elliot Anderson,Nottingham Forest,Mediocampista,23,Inglaterra,37,37,3011,3,4,6,0
+Ibrahim Sangare,Nottingham Forest,Mediocampista,28,Costa de Marfil,28,20,1828,1,1,5,0
+Nicolas Dominguez,Nottingham Forest,Mediocampista,27,Argentina,26,14,1431,1,2,5,0
+Morgan Gibbs-White,Nottingham Forest,Mediocampista,25,Inglaterra,35,34,2838,8,6,5,0
+Callum Hudson-Odoi,Nottingham Forest,Delantero,25,Inglaterra,30,22,1854,4,3,1,0
+Dan Ndoye,Nottingham Forest,Delantero,25,Suiza,31,23,1938,4,3,2,0
+Chris Wood,Nottingham Forest,Delantero,34,Nueva Zelanda,27,22,1841,7,1,1,0
+Igor Jesus,Nottingham Forest,Delantero,24,Brasil,30,17,1636,6,2,3,0
+Robin Roefs,Sunderland,Portero,22,Paises Bajos,38,38,3420,0,0,2,0
+Dan Ballard,Sunderland,Defensa,26,Irlanda del Norte,30,29,2528,3,0,7,1
+Omar Alderete,Sunderland,Defensa,29,Paraguay,33,32,2786,2,0,8,0
+Nordi Mukiele,Sunderland,Defensa,28,Francia,31,28,2497,1,1,6,0
+Reinildo Mandava,Sunderland,Defensa,31,Mozambique,33,31,2708,0,1,8,1
+Trai Hume,Sunderland,Defensa,23,Irlanda del Norte,34,30,2671,1,3,5,0
+Luke O'Nien,Sunderland,Defensa,31,Inglaterra,17,6,756,0,0,3,0
+Granit Xhaka,Sunderland,Mediocampista,33,Suiza,36,36,2916,2,6,8,0
+Noah Sadiki,Sunderland,Mediocampista,21,RD Congo,34,31,2612,1,2,7,0
+Habib Diarra,Sunderland,Mediocampista,21,Senegal,25,17,1566,2,1,4,0
+Enzo Le Fee,Sunderland,Mediocampista,25,Francia,35,31,2620,3,6,4,0
+Chris Rigg,Sunderland,Mediocampista,18,Inglaterra,24,12,1235,1,1,3,0
+Chemsdine Talbi,Sunderland,Delantero,20,Marruecos,29,19,1721,3,3,2,0
+Wilson Isidor,Sunderland,Delantero,25,Francia,34,27,2291,9,2,3,0
+Simon Adingra,Sunderland,Delantero,24,Costa de Marfil,28,18,1613,3,3,2,0
+Guglielmo Vicario,Tottenham,Portero,29,Italia,37,37,3330,0,0,2,0
+Cristian Romero,Tottenham,Defensa,27,Argentina,30,30,2601,4,1,9,1
+Micky van de Ven,Tottenham,Defensa,24,Paises Bajos,34,34,2969,4,1,4,0
+Pedro Porro,Tottenham,Defensa,26,Espana,33,32,2779,2,6,7,0
+Destiny Udogie,Tottenham,Defensa,23,Italia,24,21,1924,0,2,4,0
+Djed Spence,Tottenham,Defensa,25,Inglaterra,32,27,2450,1,2,4,0
+Kevin Danso,Tottenham,Defensa,27,Austria,23,14,1428,1,0,3,0
+Joao Palhinha,Tottenham,Mediocampista,30,Portugal,32,28,2355,3,1,9,0
+Rodrigo Bentancur,Tottenham,Mediocampista,28,Uruguay,26,18,1672,1,1,5,0
+Pape Matar Sarr,Tottenham,Mediocampista,23,Senegal,33,25,2245,3,3,5,0
+Lucas Bergvall,Tottenham,Mediocampista,19,Suecia,31,22,2008,1,3,5,0
+Xavi Simons,Tottenham,Mediocampista,22,Paises Bajos,33,27,2320,5,6,4,0
+Mohammed Kudus,Tottenham,Delantero,25,Ghana,30,27,2200,5,6,3,0
+Richarlison,Tottenham,Delantero,28,Brasil,32,24,2024,9,2,4,0
+Dominic Solanke,Tottenham,Delantero,28,Inglaterra,21,14,1285,5,1,2,0
+Alphonse Areola,West Ham,Portero,32,Francia,28,28,2520,0,0,1,0
+Max Kilman,West Ham,Defensa,28,Inglaterra,35,34,2977,1,0,5,0
+Konstantinos Mavropanos,West Ham,Defensa,28,Grecia,28,26,2298,2,0,6,0
+Kyle Walker-Peters,West Ham,Defensa,28,Inglaterra,31,28,2478,0,2,4,0
+El Hadji Malick Diouf,West Ham,Defensa,21,Senegal,33,31,2764,1,4,5,0
+Oliver Scarles,West Ham,Defensa,20,Inglaterra,16,9,961,0,1,1,0
+Tomas Soucek,West Ham,Mediocampista,30,Republica Checa,35,33,2740,6,2,6,0
+Lucas Paqueta,West Ham,Mediocampista,28,Brasil,24,22,1848,4,3,7,1
+Mateus Fernandes,West Ham,Mediocampista,21,Portugal,34,30,2538,2,3,5,0
+Guido Rodriguez,West Ham,Mediocampista,31,Argentina,22,15,1370,0,1,5,0
+Soungoutou Magassa,West Ham,Mediocampista,22,Francia,27,20,1794,0,1,6,0
+Jarrod Bowen,West Ham,Delantero,29,Inglaterra,37,37,2861,11,6,3,0
+Crysencio Summerville,West Ham,Delantero,24,Paises Bajos,30,21,1838,5,4,2,0
+Callum Wilson,West Ham,Delantero,33,Inglaterra,25,13,1297,5,1,1,0
+Niclas Fullkrug,West Ham,Delantero,32,Alemania,18,8,824,2,1,2,0
+Jose Sa,Wolves,Portero,32,Portugal,34,34,3060,0,0,3,0
+Matt Doherty,Wolves,Defensa,33,Irlanda,28,22,2033,1,2,5,0
+Emmanuel Agbadou,Wolves,Defensa,28,Costa de Marfil,22,21,1811,1,0,6,1
+Santiago Bueno,Wolves,Defensa,27,Uruguay,30,26,2365,1,0,7,0
+Toti Gomes,Wolves,Defensa,26,Portugal,31,29,2587,0,1,5,0
+Yerson Mosquera,Wolves,Defensa,24,Colombia,25,20,1859,1,0,5,0
+Ladislav Krejci,Wolves,Defensa,26,Republica Checa,32,30,2681,2,1,6,0
+Hugo Bueno,Wolves,Defensa,23,Espana,27,21,1956,0,2,3,0
+Joao Gomes,Wolves,Mediocampista,24,Brasil,35,34,2810,1,2,11,0
+Andre,Wolves,Mediocampista,24,Brasil,33,30,2487,0,2,6,0
+Marshall Munetsi,Wolves,Mediocampista,29,Zimbabue,29,22,1965,3,1,4,0
+Rodrigo Gomes,Wolves,Mediocampista,22,Portugal,28,16,1574,2,3,2,0
+Hwang Hee-chan,Wolves,Delantero,29,Corea del Sur,27,14,1385,3,2,2,0
+Jorgen Strand Larsen,Wolves,Delantero,25,Noruega,30,23,1955,5,2,3,0
+Tolu Arokodare,Wolves,Delantero,25,Nigeria,29,18,1682,4,1,3,0
