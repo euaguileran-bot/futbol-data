@@ -1,9 +1,3 @@
-// main.cpp
-// Menú principal del Analizador de estadísticas de la Premier League 2025-2026.
-//
-// Compilar:  g++ src/*.cpp -o analizador
-// Ejecutar:  ./analizador   (en Windows: .\analizador.exe)
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -24,10 +18,8 @@ const string EQUIPOS[TOTAL_EQUIPOS] = {
 const int TOTAL_POSICIONES = 4;
 const string POSICIONES[TOTAL_POSICIONES] = {"Portero", "Defensa", "Mediocampista", "Delantero"};
 
-// Lee un número entero entre minimo y maximo.
-// Si el usuario escribe una letra, cin entra en "estado de error":
-// cin.clear() quita ese error y cin.ignore() descarta lo que se escribió,
-// así podemos volver a preguntar sin que el programa se rompa.
+// Si el usuario escribe una letra, cin.clear() quita el error y cin.ignore()
+// descarta lo escrito, así se vuelve a preguntar sin que el programa se rompa
 int leerEntero(int minimo, int maximo) {
     int numero;
     cin >> numero;
@@ -66,7 +58,7 @@ void opcionOrdenar(const Registro& registro) {
     cout << "Elige el algoritmo (1-2): ";
     int algoritmo = leerEntero(1, 2);
 
-    // Se ordena una copia para que el registro conserve el orden original del CSV
+    // Se ordena una copia para no alterar el orden original del CSV
     vector<Jugador> copia = registro.getJugadores();
     string nombreAlgoritmo;
     if (algoritmo == 1) {
@@ -85,6 +77,7 @@ void opcionOrdenar(const Registro& registro) {
     } else {
         cout << " (descendente)" << endl;
     }
+    cout << ">> Comparaciones realizadas: " << getComparaciones() << endl;
 
     cout << "Cuantos jugadores quieres ver? (0 = todos): ";
     int cantidad = leerEntero(0, copia.size());
@@ -119,7 +112,7 @@ void opcionFiltrar(const Registro& registro) {
         cout << "Goles minimos: ";
         int minimo = leerEntero(0, 100);
         cout << "Goles maximos: ";
-        int maximo = leerEntero(minimo, 100);   // el maximo no puede ser menor que el minimo
+        int maximo = leerEntero(minimo, 100);
         resultado = registro.filtrarPorRangoGoles(minimo, maximo);
     }
 
@@ -138,7 +131,6 @@ int main() {
         mostrarMenu();
         opcion = leerEntero(0, 4);
 
-        // Las opciones 2, 3 y 4 necesitan que ya haya jugadores cargados
         if (opcion >= 2 && registro.getCantidad() == 0) {
             cout << "Primero carga los jugadores con la opcion 1." << endl;
             continue;

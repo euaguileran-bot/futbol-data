@@ -1,10 +1,6 @@
-// Jugador.cpp
-// Implementación de la clase Jugador.
-
 #include "Jugador.h"
-
 #include <iostream>
-#include <iomanip>   // setw, setprecision, left, right, fixed
+#include <iomanip>
 
 Jugador::Jugador() {
     nombre = "";
@@ -21,8 +17,7 @@ Jugador::Jugador() {
     tarjetasRojas = 0;
 }
 
-// Como los parámetros se llaman igual que los atributos, usamos "this->"
-// para indicar que del lado izquierdo está el atributo del objeto.
+// "this->" indica el atributo, porque el parámetro se llama igual
 Jugador::Jugador(string nombre, string equipo, string posicion, int edad,
                  string nacionalidad, int partidosJugados, int partidosTitular,
                  int minutos, int goles, int asistencias,
@@ -55,17 +50,14 @@ int Jugador::getTarjetasAmarillas() const { return tarjetasAmarillas; }
 int Jugador::getTarjetasRojas() const { return tarjetasRojas; }
 
 double Jugador::golesPor90Min() const {
-    // Si no ha jugado ni un minuto, evitamos dividir entre 0
     if (minutos == 0) {
         return 0.0;
     }
-    // Se usa 90.0 (y no 90) para que la división tenga decimales
-    return goles / (minutos / 90.0);
+    return goles / (minutos / 90.0);   // 90.0 y no 90, para que tenga decimales
 }
 
 void Jugador::mostrar() const {
-    // setw(n) reserva n espacios para el siguiente dato, así las columnas
-    // quedan alineadas. "left" alinea a la izquierda y "right" a la derecha.
+    // setw(n) reserva n espacios para que las columnas queden alineadas
     cout << left
          << setw(24) << nombre
          << setw(18) << equipo

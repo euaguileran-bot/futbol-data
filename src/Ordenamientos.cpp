@@ -1,7 +1,10 @@
-// Ordenamientos.cpp
-// Implementación de Bubble Sort y Merge Sort.
-
 #include "Ordenamientos.h"
+
+int comparaciones = 0;
+
+int getComparaciones() {
+    return comparaciones;
+}
 
 string nombreCriterio(int criterio) {
     switch (criterio) {
@@ -14,8 +17,7 @@ string nombreCriterio(int criterio) {
     }
 }
 
-// Compara dos jugadores según el criterio. Regresa:
-//   un número negativo si a < b,  0 si son iguales,  un número positivo si a > b
+// Regresa un número negativo si a < b, 0 si son iguales, positivo si a > b
 int comparar(const Jugador& a, const Jugador& b, int criterio) {
     switch (criterio) {
         case 1: return a.getGoles() - b.getGoles();
@@ -23,7 +25,6 @@ int comparar(const Jugador& a, const Jugador& b, int criterio) {
         case 3: return a.getEdad() - b.getEdad();
         case 4: return a.getMinutos() - b.getMinutos();
         case 5:
-            // Con strings, "<" y ">" comparan en orden alfabético
             if (a.getNombre() < b.getNombre()) return -1;
             if (a.getNombre() > b.getNombre()) return 1;
             return 0;
@@ -31,30 +32,26 @@ int comparar(const Jugador& a, const Jugador& b, int criterio) {
     }
 }
 
-// Regresa true si 'a' debe quedar DESPUÉS de 'b' en el resultado.
-// Si son iguales regresa false, así los empatados no se mueven de lugar.
+// Regresa true si 'a' debe quedar DESPUÉS de 'b'. Si son iguales regresa
+// false, así los empatados no se mueven de lugar.
 bool vaDespues(const Jugador& a, const Jugador& b, int criterio, bool ascendente) {
+    comparaciones++;
     int resultado = comparar(a, b, criterio);
     if (ascendente) {
-        return resultado > 0;   // de menor a mayor: el mayor va después
+        return resultado > 0;
     } else {
-        return resultado < 0;   // de mayor a menor: el menor va después
+        return resultado < 0;
     }
 }
 
-// ============================ BUBBLE SORT ============================
-// Compara cada par de vecinos y los intercambia si están en el orden
-// incorrecto. Después de cada pasada, el elemento que debe ir al final
-// "sube como burbuja" hasta su lugar.
-
 void bubbleSort(vector<Jugador>& v, int criterio, bool ascendente) {
+    comparaciones = 0;
     int n = v.size();
 
     for (int pasada = 0; pasada < n - 1; pasada++) {
         bool huboIntercambio = false;
 
-        // Los últimos 'pasada' elementos ya están en su lugar,
-        // por eso cada pasada revisa uno menos
+        // Cada pasada revisa uno menos, porque los últimos ya están en su lugar
         for (int j = 0; j < n - 1 - pasada; j++) {
             if (vaDespues(v[j], v[j + 1], criterio, ascendente)) {
                 Jugador temporal = v[j];
@@ -64,25 +61,17 @@ void bubbleSort(vector<Jugador>& v, int criterio, bool ascendente) {
             }
         }
 
-        // Optimización: si no hubo ningún intercambio, ya está ordenado.
-        // Por esto el mejor caso (datos ya ordenados) es O(n).
+        // Si no hubo intercambios ya está ordenado (por eso el mejor caso es O(n))
         if (!huboIntercambio) {
             break;
         }
     }
 }
 
-// ============================ MERGE SORT ============================
-// Divide y vencerás:
-//   1. Dividir el vector en dos mitades.
-//   2. Ordenar cada mitad (llamándose a sí mismo, de forma recursiva).
-//   3. Mezclar (merge) las dos mitades ordenadas en una sola.
-
 // Mezcla las mitades ya ordenadas v[inicio..mitad] y v[mitad+1..fin]
 void merge(vector<Jugador>& v, int inicio, int mitad, int fin,
            int criterio, bool ascendente) {
-    // Copiamos cada mitad a un vector auxiliar. Estos vectores son
-    // la razón por la que Merge Sort usa memoria extra O(n).
+    // Estos vectores auxiliares son la memoria extra O(n) de Merge Sort
     vector<Jugador> izquierda;
     vector<Jugador> derecha;
     for (int i = inicio; i <= mitad; i++) {
@@ -92,11 +81,10 @@ void merge(vector<Jugador>& v, int inicio, int mitad, int fin,
         derecha.push_back(v[i]);
     }
 
-    int i = 0;        // posición en 'izquierda'
-    int j = 0;        // posición en 'derecha'
-    int k = inicio;   // posición donde escribimos en el vector original
+    int i = 0;
+    int j = 0;
+    int k = inicio;
 
-    // Mientras las dos mitades tengan elementos, tomamos el que va primero
     while (i < (int)izquierda.size() && j < (int)derecha.size()) {
         if (!vaDespues(izquierda[i], derecha[j], criterio, ascendente)) {
             v[k] = izquierda[i];
@@ -108,7 +96,7 @@ void merge(vector<Jugador>& v, int inicio, int mitad, int fin,
         k++;
     }
 
-    // Copiamos lo que haya sobrado de alguna de las dos mitades
+    // Se copia lo que haya sobrado de alguna de las dos mitades
     while (i < (int)izquierda.size()) {
         v[k] = izquierda[i];
         i++;
@@ -121,21 +109,20 @@ void merge(vector<Jugador>& v, int inicio, int mitad, int fin,
     }
 }
 
-// Parte recursiva: ordena v[inicio..fin]
 void mergeSortRecursivo(vector<Jugador>& v, int inicio, int fin,
                         int criterio, bool ascendente) {
-    // Caso base: una parte con 0 o 1 elementos ya está ordenada
     if (inicio >= fin) {
-        return;
+        return;   // caso base: 0 o 1 elementos ya están ordenados
     }
 
     int mitad = (inicio + fin) / 2;
-    mergeSortRecursivo(v, inicio, mitad, criterio, ascendente);    // mitad izquierda
-    mergeSortRecursivo(v, mitad + 1, fin, criterio, ascendente);   // mitad derecha
-    merge(v, inicio, mitad, fin, criterio, ascendente);            // unir las dos
+    mergeSortRecursivo(v, inicio, mitad, criterio, ascendente);
+    mergeSortRecursivo(v, mitad + 1, fin, criterio, ascendente);
+    merge(v, inicio, mitad, fin, criterio, ascendente);
 }
 
 void mergeSort(vector<Jugador>& v, int criterio, bool ascendente) {
+    comparaciones = 0;
     int n = v.size();
     mergeSortRecursivo(v, 0, n - 1, criterio, ascendente);
 }

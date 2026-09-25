@@ -25,7 +25,7 @@ Menú:
 
 1. **Cargar** los jugadores de `data/jugadores.csv` (hay que hacerlo primero).
 2. **Mostrar** todos los jugadores.
-3. **Ordenar:** se elige el criterio, el orden y el algoritmo. El programa indica qué algoritmo usó y cuántos jugadores procesó.
+3. **Ordenar:** se elige el criterio, el orden y el algoritmo. El programa indica qué algoritmo usó, cuántos jugadores procesó y cuántas comparaciones hizo.
 4. **Filtrar** por equipo, posición o rango de goles.
 0. **Salir.**
 
@@ -47,7 +47,7 @@ Menú:
 - **O(n log n) en todos los casos:** siempre divide a la mitad, así que hay log₂ n niveles, y en cada nivel `merge` recorre los n elementos. Eso da n × log n, sin importar cómo vengan los datos.
 - **Espacio O(n):** `merge` copia las mitades en los vectores auxiliares `izquierda` y `derecha`.
 
-Con los 300 jugadores lo comprobé contando las comparaciones: Bubble Sort hizo **~44,000** y Merge Sort **~2,000**.
+El programa cuenta las comparaciones de cada ordenamiento. Por ejemplo, al ordenar los 300 jugadores por goles (descendente), Bubble Sort hace **44,444** y Merge Sort **1,962**.
 
 ### SICT0302: Selección del algoritmo
 

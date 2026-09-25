@@ -1,15 +1,11 @@
-// Registro.cpp
-// Implementación de la clase Registro.
-
 #include "Registro.h"
-
 #include <iostream>
 #include <iomanip>
-#include <fstream>   // ifstream para leer archivos
-#include <sstream>   // stringstream para separar una línea por comas
+#include <fstream>
+#include <sstream>
 
-// Función auxiliar: regresa true si el texto solo tiene dígitos (ej. "305").
-// Se revisa antes de usar stoi, porque stoi falla si el texto es "abc".
+// Regresa true si el texto solo tiene dígitos. Se revisa antes de usar stoi,
+// porque stoi falla si el texto es, por ejemplo, "abc".
 bool esNumero(string texto) {
     if (texto.size() == 0) {
         return false;
@@ -29,25 +25,23 @@ int Registro::cargarDesdeCSV(string ruta) {
         return 0;
     }
 
-    jugadores.clear();   // si se carga dos veces, no se duplican los jugadores
+    jugadores.clear();   // para no duplicar jugadores si se carga dos veces
 
     string linea;
-    getline(archivo, linea);   // la primera línea es la cabecera, se salta
+    getline(archivo, linea);   // se salta la cabecera
 
     int numeroLinea = 1;
     while (getline(archivo, linea)) {
         numeroLinea++;
 
-        // Los archivos creados en Windows terminan cada línea con '\r';
-        // si está, lo quitamos para que no se pegue al último número.
+        // Los archivos de Windows terminan cada línea con '\r'; se quita
         if (linea.size() > 0 && linea[linea.size() - 1] == '\r') {
             linea.erase(linea.size() - 1);
         }
         if (linea.size() == 0) {
-            continue;   // línea vacía
+            continue;
         }
 
-        // Separamos la línea por comas
         vector<string> campos;
         stringstream separador(linea);
         string campo;
@@ -55,14 +49,12 @@ int Registro::cargarDesdeCSV(string ruta) {
             campos.push_back(campo);
         }
 
-        // Validación 1: deben ser exactamente 12 campos
         if (campos.size() != 12) {
             cout << "Linea " << numeroLinea << " ignorada: le faltan campos." << endl;
             continue;
         }
 
-        // Validación 2: los campos numéricos deben ser números
-        // (todos menos nombre[0], equipo[1], posicion[2] y nacionalidad[4])
+        // Todos los campos son números, menos nombre[0], equipo[1], posicion[2] y nacionalidad[4]
         bool datosValidos = true;
         for (int i = 3; i < 12; i++) {
             if (i != 4 && !esNumero(campos[i])) {
@@ -74,7 +66,6 @@ int Registro::cargarDesdeCSV(string ruta) {
             continue;
         }
 
-        // stoi convierte un texto a entero, por ejemplo "25" -> 25
         Jugador jugador(campos[0], campos[1], campos[2], stoi(campos[3]),
                         campos[4], stoi(campos[5]), stoi(campos[6]),
                         stoi(campos[7]), stoi(campos[8]), stoi(campos[9]),
@@ -96,7 +87,7 @@ void Registro::mostrarLista(const vector<Jugador>& lista, int cantidad) const {
         cantidad = n;
     }
 
-    // Encabezado de la tabla: los anchos coinciden con Jugador::mostrar()
+    // Los anchos coinciden con los de Jugador::mostrar()
     cout << endl;
     cout << left << setw(5) << "#"
          << setw(24) << "Nombre"
@@ -110,7 +101,7 @@ void Registro::mostrarLista(const vector<Jugador>& lista, int cantidad) const {
     cout << string(122, '-') << endl;
 
     for (int i = 0; i < cantidad; i++) {
-        cout << left << setw(5) << i + 1;   // número de fila
+        cout << left << setw(5) << i + 1;
         lista[i].mostrar();
     }
 
