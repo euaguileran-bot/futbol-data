@@ -20,7 +20,7 @@ El programa lee un archivo CSV con las estadísticas de cada jugador (goles, asi
 
 ### ¿Por qué elegí este tema?
 
-Me gusta el fútbol y sigo la Premier League, así que trabajar con sus datos hace que el proyecto sea más interesante para mí. Además, las estadísticas de jugadores son un buen caso para practicar los algoritmos de la materia:
+Me gusta el fútbol y sigo la Premier League, así que trabajar con sus datos hace que el proyecto sea más interesante para mí. Además, las estadísticas de jugadores son un buen caso para practicar los algoritmos y temas de la materia:
 
 - Cada jugador tiene **atributos numéricos** (goles, minutos, edad…) y **de texto** (nombre, equipo, nacionalidad), así que un mismo algoritmo de ordenamiento se puede probar con criterios muy diferentes.
 - Son preguntas que realmente se hacen los aficionados: ¿quién es el máximo goleador?, ¿qué jugadores de Arsenal tienen más asistencias?, ¿quiénes jugaron más minutos?
