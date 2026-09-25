@@ -6,8 +6,6 @@
 #include <iostream>
 #include <iomanip>   // setw, setprecision, left, right, fixed
 
-using namespace std;
-
 Jugador::Jugador() {
     nombre = "";
     equipo = "";
@@ -25,10 +23,10 @@ Jugador::Jugador() {
 
 // Como los parámetros se llaman igual que los atributos, usamos "this->"
 // para indicar que del lado izquierdo está el atributo del objeto.
-Jugador::Jugador(const string& nombre, const string& equipo,
-                 const string& posicion, int edad, const string& nacionalidad,
-                 int partidosJugados, int partidosTitular, int minutos,
-                 int goles, int asistencias, int tarjetasAmarillas, int tarjetasRojas) {
+Jugador::Jugador(string nombre, string equipo, string posicion, int edad,
+                 string nacionalidad, int partidosJugados, int partidosTitular,
+                 int minutos, int goles, int asistencias,
+                 int tarjetasAmarillas, int tarjetasRojas) {
     this->nombre = nombre;
     this->equipo = equipo;
     this->posicion = posicion;
@@ -57,20 +55,17 @@ int Jugador::getTarjetasAmarillas() const { return tarjetasAmarillas; }
 int Jugador::getTarjetasRojas() const { return tarjetasRojas; }
 
 double Jugador::golesPor90Min() const {
-    // Si el jugador no ha jugado ni un minuto evitamos dividir entre 0
+    // Si no ha jugado ni un minuto, evitamos dividir entre 0
     if (minutos == 0) {
         return 0.0;
     }
-    // Se usa 90.0 (y no 90) para que la división sea con decimales;
-    // con enteros, 100 / 90 daría 1 en lugar de 1.11
+    // Se usa 90.0 (y no 90) para que la división tenga decimales
     return goles / (minutos / 90.0);
 }
 
 void Jugador::mostrar() const {
-    // setw(n) reserva n espacios para el siguiente dato; así las columnas
-    // quedan alineadas. "left" alinea texto a la izquierda y "right" los
-    // números a la derecha. Los anchos coinciden con el encabezado que
-    // imprime Registro::mostrarLista().
+    // setw(n) reserva n espacios para el siguiente dato, así las columnas
+    // quedan alineadas. "left" alinea a la izquierda y "right" a la derecha.
     cout << left
          << setw(24) << nombre
          << setw(18) << equipo

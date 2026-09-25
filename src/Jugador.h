@@ -6,14 +6,15 @@
 #define JUGADOR_H
 
 #include <string>
+using namespace std;
 
 class Jugador {
 private:
-    std::string nombre;
-    std::string equipo;
-    std::string posicion;       // Portero, Defensa, Mediocampista o Delantero
+    string nombre;
+    string equipo;
+    string posicion;       // Portero, Defensa, Mediocampista o Delantero
     int edad;
-    std::string nacionalidad;
+    string nacionalidad;
     int partidosJugados;
     int partidosTitular;
     int minutos;
@@ -26,20 +27,18 @@ public:
     // Constructor por defecto: textos vacíos y números en 0
     Jugador();
 
-    // Constructor con parámetros.
-    // Los textos se reciben como "const std::string&" (referencia constante)
-    // para no copiar el texto al llamar la función y garantizar que no se modifica.
-    Jugador(const std::string& nombre, const std::string& equipo,
-            const std::string& posicion, int edad, const std::string& nacionalidad,
-            int partidosJugados, int partidosTitular, int minutos,
-            int goles, int asistencias, int tarjetasAmarillas, int tarjetasRojas);
+    // Constructor con parámetros
+    Jugador(string nombre, string equipo, string posicion, int edad,
+            string nacionalidad, int partidosJugados, int partidosTitular,
+            int minutos, int goles, int asistencias,
+            int tarjetasAmarillas, int tarjetasRojas);
 
     // Getters. Son "const" porque solo leen los atributos, no los cambian.
-    std::string getNombre() const;
-    std::string getEquipo() const;
-    std::string getPosicion() const;
+    string getNombre() const;
+    string getEquipo() const;
+    string getPosicion() const;
     int getEdad() const;
-    std::string getNacionalidad() const;
+    string getNacionalidad() const;
     int getPartidosJugados() const;
     int getPartidosTitular() const;
     int getMinutos() const;
@@ -48,11 +47,11 @@ public:
     int getTarjetasAmarillas() const;
     int getTarjetasRojas() const;
 
-    // Atributo derivado: no se guarda, se calcula a partir de goles y minutos.
+    // Atributo derivado: no se guarda, se calcula con goles y minutos.
     // Indica cuántos goles anota el jugador en promedio cada 90 minutos.
     double golesPor90Min() const;
 
-    // Imprime los datos del jugador formateados en una sola línea (fila de tabla)
+    // Imprime los datos del jugador en una sola línea (una fila de la tabla)
     void mostrar() const;
 };
 
