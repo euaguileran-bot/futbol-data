@@ -44,10 +44,13 @@ nombre,equipo,posicion,edad,nacionalidad,partidos_jugados,partidos_titular,minut
 Desde la carpeta principal del proyecto:
 
 ```bash
-g++ -std=c++17 -Wall src/*.cpp -o analizador
+g++ src/*.cpp -o analizador
 ```
 
-El programa compila **sin errores ni warnings** con `-Wall` (también con `-Wextra -pedantic`).
+- `src/*.cpp` compila todos los archivos `.cpp` de la carpeta `src`.
+- `-o analizador` le pone ese nombre al ejecutable (sin esto se llamaría `a.exe` o `a.out`).
+
+El programa compila sin errores y **sin warnings** aun activando las advertencias del compilador (`-Wall`).
 
 ### Ejecución
 

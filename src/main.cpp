@@ -1,7 +1,7 @@
 // main.cpp
 // Menú principal del Analizador de estadísticas de la Premier League 2025-2026.
 //
-// Compilar:  g++ -std=c++17 -Wall src/*.cpp -o analizador
+// Compilar:  g++ src/*.cpp -o analizador
 // Ejecutar:  ./analizador   (desde la carpeta principal del proyecto)
 
 #include <iostream>
