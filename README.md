@@ -23,7 +23,7 @@ El programa lee un archivo CSV con las estadísticas de cada jugador (goles, asi
 Me gusta el fútbol y sigo la Premier League, así que trabajar con sus datos hace que el proyecto sea más interesante para mí. Además, las estadísticas de jugadores son un buen caso para practicar los algoritmos de la materia:
 
 - Cada jugador tiene **atributos numéricos** (goles, minutos, edad…) y **de texto** (nombre, equipo, nacionalidad), así que un mismo algoritmo de ordenamiento se puede probar con criterios muy diferentes.
-- Son preguntas que realmente se hacen los aficionados: ¿quién es el máximo goleador?, ¿qué jugadores de Arsenal tienen más asistencias?, ¿quiénes jugaron más de 3000 minutos?
+- Son preguntas que realmente se hacen los aficionados: ¿quién es el máximo goleador?, ¿qué jugadores de Arsenal tienen más asistencias?, ¿quiénes jugaron más minutos?
 - Con ~300 registros ya se nota claramente la diferencia entre un algoritmo O(n²) y uno O(n log n) (ver la sección 3).
 
 ### Sobre los datos
