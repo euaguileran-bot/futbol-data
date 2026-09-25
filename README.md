@@ -2,7 +2,7 @@
 
 **Proyecto de Estructuras de Datos y Algoritmos — Avance 1**
 
-Programa de consola en C++17 que carga, organiza, ordena, filtra, busca y exporta las estadísticas de **300 jugadores reales de la Premier League 2025-2026** (15 por cada uno de los 20 equipos).
+Programa de consola en C++ que carga, organiza, ordena, filtra, busca y exporta las estadísticas de **300 jugadores reales de la Premier League 2025-2026** (15 por cada uno de los 20 equipos).
 
 ## 1. Descripción del proyecto
 
