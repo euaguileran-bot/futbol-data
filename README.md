@@ -24,7 +24,7 @@ Me gusta el fútbol y sigo la Premier League, así que trabajar con sus datos ha
 
 - Cada jugador tiene **atributos numéricos** (goles, minutos, edad…) y **de texto** (nombre, equipo, nacionalidad), así que un mismo algoritmo de ordenamiento se puede probar con criterios muy diferentes.
 - Son preguntas que realmente se hacen los aficionados: ¿quién es el máximo goleador?, ¿qué jugadores de Arsenal tienen más asistencias?, ¿quiénes jugaron más minutos?
-- Con ~300 registros ya se nota claramente la diferencia entre un algoritmo O(n²) y uno O(n log n) (ver la sección 3).
+- Con ~300 registros ya se nota claramente la diferencia entre un algoritmo O(n²) y uno O(n log n).
 
 ### Sobre los datos
 
