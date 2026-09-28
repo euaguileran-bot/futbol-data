@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "Jugador.h"
@@ -6,17 +7,8 @@
 #include "Ordenamientos.h"
 
 const string RUTA_CSV = "data/jugadores.csv";
-
-const int TOTAL_EQUIPOS = 20;
-const string EQUIPOS[TOTAL_EQUIPOS] = {
-    "Arsenal", "Aston Villa", "Bournemouth", "Brentford", "Brighton",
-    "Burnley", "Chelsea", "Crystal Palace", "Everton", "Fulham",
-    "Leeds United", "Liverpool", "Manchester City", "Manchester United", "Newcastle",
-    "Nottingham Forest", "Sunderland", "Tottenham", "West Ham", "Wolves"
-};
-
-const int TOTAL_POSICIONES = 4;
-const string POSICIONES[TOTAL_POSICIONES] = {"Portero", "Defensa", "Mediocampista", "Delantero"};
+const string RUTA_EQUIPOS = "data/equipos.txt";
+const string RUTA_POSICIONES = "data/posiciones.txt";
 
 // Si el usuario escribe una letra, cin.clear() quita el error y cin.ignore()
 // descarta lo escrito, así se vuelve a preguntar sin que el programa se rompa
@@ -31,6 +23,37 @@ int leerEntero(int minimo, int maximo) {
         cin >> numero;
     }
     return numero;
+}
+
+// Lee un archivo de texto y regresa cada línea como un elemento del vector
+vector<string> leerLista(string ruta) {
+    vector<string> lista;
+    ifstream archivo(ruta);
+    if (!archivo.is_open()) {
+        cout << "Error: no se pudo abrir el archivo " << ruta << endl;
+        return lista;
+    }
+    string linea;
+    while (getline(archivo, linea)) {
+        // Los archivos de Windows terminan cada línea con '\r'; se quita
+        if (linea.size() > 0 && linea[linea.size() - 1] == '\r') {
+            linea.erase(linea.size() - 1);
+        }
+        if (linea.size() > 0) {
+            lista.push_back(linea);
+        }
+    }
+    return lista;
+}
+
+// Muestra una lista numerada y regresa el elemento que elija el usuario
+string elegirDeLista(const vector<string>& lista) {
+    for (int i = 0; i < (int)lista.size(); i++) {
+        cout << "  " << i + 1 << ". " << lista[i] << endl;
+    }
+    cout << "Elige una opcion (1-" << lista.size() << "): ";
+    int opcion = leerEntero(1, lista.size());
+    return lista[opcion - 1];
 }
 
 void mostrarMenu() {
@@ -95,19 +118,17 @@ void opcionFiltrar(const Registro& registro) {
     vector<Jugador> resultado;
 
     if (tipo == 1) {
-        for (int i = 0; i < TOTAL_EQUIPOS; i++) {
-            cout << "  " << i + 1 << ". " << EQUIPOS[i] << endl;
+        vector<string> equipos = leerLista(RUTA_EQUIPOS);
+        if (equipos.size() == 0) {
+            return;
         }
-        cout << "Elige el equipo (1-" << TOTAL_EQUIPOS << "): ";
-        int equipo = leerEntero(1, TOTAL_EQUIPOS);
-        resultado = registro.filtrarPorEquipo(EQUIPOS[equipo - 1]);
+        resultado = registro.filtrarPorEquipo(elegirDeLista(equipos));
     } else if (tipo == 2) {
-        for (int i = 0; i < TOTAL_POSICIONES; i++) {
-            cout << "  " << i + 1 << ". " << POSICIONES[i] << endl;
+        vector<string> posiciones = leerLista(RUTA_POSICIONES);
+        if (posiciones.size() == 0) {
+            return;
         }
-        cout << "Elige la posicion (1-" << TOTAL_POSICIONES << "): ";
-        int posicion = leerEntero(1, TOTAL_POSICIONES);
-        resultado = registro.filtrarPorPosicion(POSICIONES[posicion - 1]);
+        resultado = registro.filtrarPorPosicion(elegirDeLista(posiciones));
     } else {
         cout << "Goles minimos: ";
         int minimo = leerEntero(0, 100);

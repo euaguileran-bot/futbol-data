@@ -26,7 +26,7 @@ Menú:
 1. **Cargar** los jugadores de `data/jugadores.csv` (hay que hacerlo primero).
 2. **Mostrar** todos los jugadores.
 3. **Ordenar:** se elige el criterio, el orden y el algoritmo. El programa indica qué algoritmo usó, cuántos jugadores procesó y cuántas comparaciones hizo.
-4. **Filtrar** por equipo, posición o rango de goles.
+4. **Filtrar** por equipo, posición o rango de goles. Las listas de equipos y posiciones se leen de `data/equipos.txt` y `data/posiciones.txt`.
 0. **Salir.**
 
 ## 3. Sub-competencias
