@@ -25,8 +25,9 @@ int comparar(const Jugador& a, const Jugador& b, int criterio) {
         case 3: return a.getEdad() - b.getEdad();
         case 4: return a.getMinutos() - b.getMinutos();
         case 5:
-            if (a.getNombre() < b.getNombre()) return -1;
-            if (a.getNombre() > b.getNombre()) return 1;
+            // Usa los operadores de Jugador para ordenar igual que el árbol
+            if (a < b) return -1;
+            if (a > b) return 1;
             return 0;
         default: return 0;
     }

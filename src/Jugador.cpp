@@ -1,9 +1,23 @@
 #include "Jugador.h"
-#include <iostream>
 #include <iomanip>
 
 Jugador::Jugador() {
     nombre = "";
+    equipo = "";
+    posicion = "";
+    edad = 0;
+    nacionalidad = "";
+    partidosJugados = 0;
+    partidosTitular = 0;
+    minutos = 0;
+    goles = 0;
+    asistencias = 0;
+    tarjetasAmarillas = 0;
+    tarjetasRojas = 0;
+}
+
+Jugador::Jugador(string nombre) {
+    this->nombre = nombre;
     equipo = "";
     posicion = "";
     edad = 0;
@@ -49,6 +63,14 @@ int Jugador::getAsistencias() const { return asistencias; }
 int Jugador::getTarjetasAmarillas() const { return tarjetasAmarillas; }
 int Jugador::getTarjetasRojas() const { return tarjetasRojas; }
 
+void Jugador::setPartidosJugados(int partidosJugados) { this->partidosJugados = partidosJugados; }
+void Jugador::setPartidosTitular(int partidosTitular) { this->partidosTitular = partidosTitular; }
+void Jugador::setMinutos(int minutos) { this->minutos = minutos; }
+void Jugador::setGoles(int goles) { this->goles = goles; }
+void Jugador::setAsistencias(int asistencias) { this->asistencias = asistencias; }
+void Jugador::setTarjetasAmarillas(int tarjetasAmarillas) { this->tarjetasAmarillas = tarjetasAmarillas; }
+void Jugador::setTarjetasRojas(int tarjetasRojas) { this->tarjetasRojas = tarjetasRojas; }
+
 double Jugador::golesPor90Min() const {
     if (minutos == 0) {
         return 0.0;
@@ -56,22 +78,44 @@ double Jugador::golesPor90Min() const {
     return goles / (minutos / 90.0);   // 90.0 y no 90, para que tenga decimales
 }
 
-void Jugador::mostrar() const {
+// Regresa una copia del texto en minúsculas (solo cambia de la A a la Z)
+string aMinusculas(string texto) {
+    for (int i = 0; i < (int)texto.size(); i++) {
+        if (texto[i] >= 'A' && texto[i] <= 'Z') {
+            texto[i] = texto[i] - 'A' + 'a';
+        }
+    }
+    return texto;
+}
+
+bool Jugador::operator<(const Jugador& otro) const {
+    return aMinusculas(nombre) < aMinusculas(otro.nombre);
+}
+
+bool Jugador::operator>(const Jugador& otro) const {
+    return aMinusculas(nombre) > aMinusculas(otro.nombre);
+}
+
+bool Jugador::operator==(const Jugador& otro) const {
+    return aMinusculas(nombre) == aMinusculas(otro.nombre);
+}
+
+ostream& operator<<(ostream& salida, const Jugador& jugador) {
     // setw(n) reserva n espacios para que las columnas queden alineadas
-    cout << left
-         << setw(24) << nombre
-         << setw(18) << equipo
-         << setw(14) << posicion
-         << right << setw(4) << edad << "  "
-         << left << setw(18) << nacionalidad
-         << right
-         << setw(4) << partidosJugados
-         << setw(4) << partidosTitular
-         << setw(6) << minutos
-         << setw(4) << goles
-         << setw(4) << asistencias
-         << setw(4) << tarjetasAmarillas
-         << setw(4) << tarjetasRojas
-         << setw(7) << fixed << setprecision(2) << golesPor90Min()
-         << endl;
+    salida << left
+           << setw(24) << jugador.getNombre()
+           << setw(18) << jugador.getEquipo()
+           << setw(14) << jugador.getPosicion()
+           << right << setw(4) << jugador.getEdad() << "  "
+           << left << setw(18) << jugador.getNacionalidad()
+           << right
+           << setw(4) << jugador.getPartidosJugados()
+           << setw(4) << jugador.getPartidosTitular()
+           << setw(6) << jugador.getMinutos()
+           << setw(4) << jugador.getGoles()
+           << setw(4) << jugador.getAsistencias()
+           << setw(4) << jugador.getTarjetasAmarillas()
+           << setw(4) << jugador.getTarjetasRojas()
+           << setw(7) << fixed << setprecision(2) << jugador.golesPor90Min();
+    return salida;
 }
