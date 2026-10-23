@@ -17,7 +17,6 @@ private:
 
     bool leerCatalogo(string ruta, vector<string>& destino);
     bool estaEnCatalogo(string valor, const vector<string>& catalogo) const;
-    void reconstruirArbol();
     void mostrarEncabezado() const;
     void mostrarPie(int mostrados) const;
 
@@ -38,19 +37,10 @@ public:
 
     vector<Jugador> getJugadores() const;
     int getCantidad() const;
-    int getCantidadEnArbol() const;
 
     // Consultas
-    int buscarEnLista(string nombre, Jugador& encontrado, int& pasos) const;
+    bool buscarEnLista(string nombre, Jugador& encontrado, int& pasos) const;
     bool buscarEnArbol(string nombre, Jugador& encontrado, int& pasos) const;
-    bool existeJugador(string nombre) const;
-
-    // Cambios (siempre dejan la lista y el árbol sincronizados)
-    bool agregarJugador(const Jugador& nuevo, bool alInicio);
-    bool actualizarJugador(const Jugador& actualizado);
-    bool eliminarJugador(string nombre);
-
-    // Información del árbol
     int alturaArbol() const;
     void mostrarRecorrido(int tipo) const;   // 1 pre, 2 in, 3 post, 4 por niveles
     int nivelDe(string nombre) const;

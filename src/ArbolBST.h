@@ -25,14 +25,10 @@ public:
 // Árbol binario de búsqueda: a la izquierda de cada nodo van los menores y a
 // la derecha los mayores. Para Jugador, "menor" significa que su nombre va
 // antes en el alfabeto (gracias a los operadores < y > de Jugador).
-//
-// Convención: la raíz está en el NIVEL 1 y la altura es el número de niveles
-// (árbol vacío = 0, solo la raíz = 1).
+// La raíz está en el NIVEL 1 y la altura es el número de niveles.
 // n = número de nodos, h = altura. Si los datos llegan en desorden, h se
 // acerca a log2(n); si llegan ya ordenados, el árbol se vuelve una "lista"
-// y h = n (peor caso).
-//
-// No se debe copiar (pasar por valor), por la misma razón que ListaDoble.
+// y h = n (peor caso). No se debe copiar, igual que ListaDoble.
 template <class T>
 class ArbolBST {
 private:
@@ -79,16 +75,6 @@ private:
         cout << nodo->dato << endl;
     }
 
-    // O(n): igual que el inorden, pero guarda los datos en lugar de imprimirlos
-    void inordenAVectorRecursivo(NodoArbol<T>* nodo, vector<T>& resultado) const {
-        if (nodo == nullptr) {
-            return;
-        }
-        inordenAVectorRecursivo(nodo->izquierdo, resultado);
-        resultado.push_back(nodo->dato);
-        inordenAVectorRecursivo(nodo->derecho, resultado);
-    }
-
     // O(n): visita todos los nodos
     int alturaRecursivo(NodoArbol<T>* nodo) const {
         if (nodo == nullptr) {
@@ -100,14 +86,6 @@ private:
             return alturaIzquierda + 1;
         }
         return alturaDerecha + 1;
-    }
-
-    // O(n): visita todos los nodos
-    int contarRecursivo(NodoArbol<T>* nodo) const {
-        if (nodo == nullptr) {
-            return 0;
-        }
-        return 1 + contarRecursivo(nodo->izquierdo) + contarRecursivo(nodo->derecho);
     }
 
     // O(n): imprime solo los nodos que están 'nivel' niveles debajo de 'nodo'.
@@ -140,11 +118,6 @@ public:
     void vaciar() {
         vaciarRecursivo(raiz);
         raiz = nullptr;
-    }
-
-    // O(1)
-    bool estaVacio() const {
-        return raiz == nullptr;
     }
 
     // O(h): baja desde la raíz (izquierda si es menor, derecha si es mayor)
@@ -196,18 +169,6 @@ public:
         return nullptr;
     }
 
-    // O(h): busca el nodo igual (==) y reemplaza su dato. Para Jugador, el
-    // nombre no cambia (es lo que se compara), así que el orden no se rompe.
-    bool actualizar(const T& valor) {
-        int pasos;
-        T* dato = buscar(valor, pasos);
-        if (dato == nullptr) {
-            return false;
-        }
-        *dato = valor;   // "*dato" es el dato al que apunta el apuntador
-        return true;
-    }
-
     // O(n) cada uno: visitan todos los nodos
     void preorden() const {
         preordenRecursivo(raiz);
@@ -231,21 +192,9 @@ public:
         }
     }
 
-    // O(n): datos en orden de menor a mayor (alfabético para Jugador)
-    vector<T> inordenAVector() const {
-        vector<T> resultado;
-        inordenAVectorRecursivo(raiz, resultado);
-        return resultado;
-    }
-
     // O(n): número de niveles (0 si está vacío)
     int altura() const {
         return alturaRecursivo(raiz);
-    }
-
-    // O(n)
-    int contarNodos() const {
-        return contarRecursivo(raiz);
     }
 
     // O(h): camino desde la raíz hasta el padre del dato. Es el mismo camino

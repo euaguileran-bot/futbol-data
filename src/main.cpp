@@ -9,14 +9,6 @@ const string RUTA_CSV = "data/jugadores.csv";
 const string RUTA_EQUIPOS = "data/equipos.txt";
 const string RUTA_POSICIONES = "data/posiciones.txt";
 
-// Límites para validar lo que escribe el usuario
-const int EDAD_MINIMA = 15;
-const int EDAD_MAXIMA = 50;
-const int PARTIDOS_POR_TEMPORADA = 38;
-const int MAXIMO_GOLES_ASISTENCIAS = 100;
-
-// ============================ Lectura de datos ============================
-
 // Si el usuario escribe una letra, cin.clear() quita el error y cin.ignore()
 // descarta lo escrito, así se vuelve a preguntar sin que el programa se rompa
 int leerEntero(int minimo, int maximo) {
@@ -50,11 +42,6 @@ string leerTexto() {
     return texto;
 }
 
-int pedirDato(string texto, int minimo, int maximo) {
-    cout << texto << " (" << minimo << "-" << maximo << "): ";
-    return leerEntero(minimo, maximo);
-}
-
 // Muestra una lista numerada y regresa el elemento que elija el usuario
 string elegirDeLista(const vector<string>& lista) {
     for (int i = 0; i < (int)lista.size(); i++) {
@@ -65,21 +52,6 @@ string elegirDeLista(const vector<string>& lista) {
     return lista[opcion - 1];
 }
 
-// Pide las 7 estadísticas y las guarda en el jugador con sus setters.
-// Se usa al agregar y al actualizar.
-void pedirEstadisticas(Jugador& jugador) {
-    jugador.setPartidosJugados(pedirDato("Partidos jugados", 0, PARTIDOS_POR_TEMPORADA));
-    int jugados = jugador.getPartidosJugados();
-    jugador.setPartidosTitular(pedirDato("Partidos de titular", 0, jugados));
-    jugador.setMinutos(pedirDato("Minutos", 0, jugados * 90));
-    jugador.setGoles(pedirDato("Goles", 0, MAXIMO_GOLES_ASISTENCIAS));
-    jugador.setAsistencias(pedirDato("Asistencias", 0, MAXIMO_GOLES_ASISTENCIAS));
-    jugador.setTarjetasAmarillas(pedirDato("Tarjetas amarillas", 0, jugados));
-    jugador.setTarjetasRojas(pedirDato("Tarjetas rojas", 0, jugados));
-}
-
-// ============================ Opciones del menú ============================
-
 void mostrarMenu() {
     cout << endl;
     cout << "==== ANALIZADOR PREMIER LEAGUE ====" << endl;
@@ -88,12 +60,9 @@ void mostrarMenu() {
     cout << "3. Ordenar jugadores" << endl;
     cout << "4. Filtrar jugadores" << endl;
     cout << "5. Buscar jugador por nombre" << endl;
-    cout << "6. Agregar jugador" << endl;
-    cout << "7. Actualizar estadisticas de un jugador" << endl;
-    cout << "8. Eliminar jugador" << endl;
-    cout << "9. Informacion del arbol" << endl;
+    cout << "6. Informacion del arbol" << endl;
     cout << "0. Salir" << endl;
-    cout << "Elige una opcion (0-9): ";
+    cout << "Elige una opcion (0-6): ";
 }
 
 void opcionMostrar(const Registro& registro) {
@@ -161,27 +130,15 @@ void opcionFiltrar(const Registro& registro) {
     int tipo = leerEntero(1, 3);
 
     vector<Jugador> resultado;
-
-    if (tipo == 1 || tipo == 2) {
-        vector<string> opciones;
-        if (tipo == 1) {
-            opciones = registro.getEquipos();
-        } else {
-            opciones = registro.getPosiciones();
-        }
-        if (opciones.size() == 0) {
-            cout << "No hay catalogo para este filtro. Revisa data/equipos.txt y data/posiciones.txt" << endl;
-            return;
-        }
-        string elegido = elegirDeLista(opciones);
-        if (tipo == 1) {
-            resultado = registro.filtrarPorEquipo(elegido);
-        } else {
-            resultado = registro.filtrarPorPosicion(elegido);
-        }
+    if (tipo == 1) {
+        resultado = registro.filtrarPorEquipo(elegirDeLista(registro.getEquipos()));
+    } else if (tipo == 2) {
+        resultado = registro.filtrarPorPosicion(elegirDeLista(registro.getPosiciones()));
     } else {
-        int minimo = pedirDato("Goles minimos", 0, MAXIMO_GOLES_ASISTENCIAS);
-        int maximo = pedirDato("Goles maximos", minimo, MAXIMO_GOLES_ASISTENCIAS);
+        cout << "Goles minimos (0-100): ";
+        int minimo = leerEntero(0, 100);
+        cout << "Goles maximos (" << minimo << "-100): ";
+        int maximo = leerEntero(minimo, 100);
         resultado = registro.filtrarPorRangoGoles(minimo, maximo);
     }
 
@@ -196,130 +153,31 @@ void opcionBuscar(const Registro& registro) {
     cout << endl << "--- BUSCAR JUGADOR ---" << endl;
     cout << "Nombre completo sin acentos (ej. Declan Rice): ";
     string nombre = leerTexto();
-    cout << "Buscar en: 1 = lista (secuencial), 2 = arbol (BST), 3 = los dos para comparar" << endl;
-    cout << "Elige (1-3): ";
-    int donde = leerEntero(1, 3);
+    cout << "Buscar en: 1 = lista (secuencial, O(n)), 2 = arbol (BST, O(altura))" << endl;
+    cout << "Elige (1-2): ";
+    int donde = leerEntero(1, 2);
 
     Jugador encontrado;
     int pasos;
-    bool loEncontro = false;
-
-    if (donde == 1 || donde == 3) {
-        int posicion = registro.buscarEnLista(nombre, encontrado, pasos);
-        if (posicion == -1) {
-            cout << ">> Lista: no se encontro (" << pasos << " pasos)" << endl;
-        } else {
-            cout << ">> Lista: encontrado en la posicion " << posicion
-                 << " (" << pasos << " pasos)" << endl;
-            loEncontro = true;
-        }
-    }
-    if (donde == 2 || donde == 3) {
-        if (registro.buscarEnArbol(nombre, encontrado, pasos)) {
-            cout << ">> Arbol: encontrado (" << pasos << " pasos)" << endl;
-            loEncontro = true;
-        } else {
-            cout << ">> Arbol: no se encontro (" << pasos << " pasos)" << endl;
-        }
+    bool loEncontro;
+    if (donde == 1) {
+        loEncontro = registro.buscarEnLista(nombre, encontrado, pasos);
+    } else {
+        loEncontro = registro.buscarEnArbol(nombre, encontrado, pasos);
     }
 
     if (loEncontro) {
+        cout << ">> Encontrado en " << pasos << " pasos" << endl;
         vector<Jugador> uno;
         uno.push_back(encontrado);
         registro.mostrarLista(uno, 0);
+    } else {
+        cout << ">> No se encontro (" << pasos << " pasos)" << endl;
     }
-}
-
-void opcionAgregar(Registro& registro) {
-    cout << endl << "--- AGREGAR JUGADOR ---" << endl;
-    vector<string> equipos = registro.getEquipos();
-    vector<string> posiciones = registro.getPosiciones();
-    if (equipos.size() == 0 || posiciones.size() == 0) {
-        cout << "No se puede agregar: faltan los catalogos (data/equipos.txt o data/posiciones.txt)." << endl;
-        return;
-    }
-
-    cout << "Nombre completo sin acentos: ";
-    string nombre = leerTexto();
-    if (registro.existeJugador(nombre)) {
-        cout << "Ya existe un jugador con ese nombre." << endl;
-        return;
-    }
-    cout << "Equipo:" << endl;
-    string equipo = elegirDeLista(equipos);
-    cout << "Posicion:" << endl;
-    string posicion = elegirDeLista(posiciones);
-    int edad = pedirDato("Edad", EDAD_MINIMA, EDAD_MAXIMA);
-    cout << "Nacionalidad sin acentos: ";
-    string nacionalidad = leerTexto();
-
-    Jugador nuevo(nombre, equipo, posicion, edad, nacionalidad, 0, 0, 0, 0, 0, 0, 0);
-    pedirEstadisticas(nuevo);
-
-    cout << "Agregar en la lista: 1 = al final, 2 = al inicio" << endl;
-    cout << "Elige (1-2): ";
-    bool alInicio = (leerEntero(1, 2) == 2);
-
-    registro.agregarJugador(nuevo, alInicio);
-    cout << ">> Jugador agregado. Lista: " << registro.getCantidad()
-         << " jugadores | Arbol: " << registro.getCantidadEnArbol() << " nodos" << endl;
-}
-
-void opcionActualizar(Registro& registro) {
-    cout << endl << "--- ACTUALIZAR ESTADISTICAS ---" << endl;
-    cout << "Nombre del jugador: ";
-    string nombre = leerTexto();
-    Jugador jugador;
-    int pasos;
-    if (!registro.buscarEnArbol(nombre, jugador, pasos)) {
-        cout << "No se encontro a " << nombre << endl;
-        return;
-    }
-
-    vector<Jugador> antes;
-    antes.push_back(jugador);
-    cout << "Datos actuales:";
-    registro.mostrarLista(antes, 0);
-
-    cout << "Escribe los nuevos valores:" << endl;
-    pedirEstadisticas(jugador);
-    registro.actualizarJugador(jugador);
-
-    vector<Jugador> despues;
-    despues.push_back(jugador);
-    cout << ">> Jugador actualizado en la lista y en el arbol:";
-    registro.mostrarLista(despues, 0);
-}
-
-void opcionEliminar(Registro& registro) {
-    cout << endl << "--- ELIMINAR JUGADOR ---" << endl;
-    cout << "Nombre del jugador: ";
-    string nombre = leerTexto();
-    Jugador jugador;
-    int pasos;
-    if (!registro.buscarEnArbol(nombre, jugador, pasos)) {
-        cout << "No se encontro a " << nombre << endl;
-        return;
-    }
-
-    vector<Jugador> uno;
-    uno.push_back(jugador);
-    registro.mostrarLista(uno, 0);
-    cout << "Seguro que quieres eliminarlo? 1 = si, 2 = no: ";
-    if (leerEntero(1, 2) == 2) {
-        cout << "No se elimino." << endl;
-        return;
-    }
-
-    registro.eliminarJugador(jugador.getNombre());
-    cout << ">> Jugador eliminado. Lista: " << registro.getCantidad()
-         << " jugadores | Arbol reconstruido: " << registro.getCantidadEnArbol() << " nodos" << endl;
 }
 
 void opcionArbol(const Registro& registro) {
     cout << endl << "--- INFORMACION DEL ARBOL ---" << endl;
-    cout << "Jugadores en la lista: " << registro.getCantidad()
-         << " | Nodos en el arbol: " << registro.getCantidadEnArbol() << endl;
     cout << "Altura del arbol: " << registro.alturaArbol() << " niveles (la raiz es el nivel 1)" << endl;
     cout << "1. Recorrido preorden" << endl;
     cout << "2. Recorrido inorden" << endl;
@@ -351,29 +209,25 @@ void opcionArbol(const Registro& registro) {
     }
 }
 
-// ================================== main ==================================
-
 int main() {
     Registro registro;
 
-    // Los catálogos se leen antes del menú. Si falta alguno, el programa sigue
-    // funcionando, pero no podrá cargar el CSV ni agregar jugadores.
+    // Los catálogos se leen antes del menú. Si falta alguno, el programa
+    // sigue funcionando pero no podrá cargar el CSV.
     if (registro.cargarCatalogos(RUTA_EQUIPOS, RUTA_POSICIONES)) {
         cout << ">> Catalogos cargados: " << registro.getEquipos().size() << " equipos y "
              << registro.getPosiciones().size() << " posiciones" << endl;
     } else {
-        cout << "Aviso: sin los catalogos no se podra cargar el CSV ni agregar jugadores." << endl;
+        cout << "Aviso: sin los catalogos no se podra cargar el CSV." << endl;
     }
 
     int opcion = -1;
     while (opcion != 0) {
         mostrarMenu();
-        opcion = leerEntero(0, 9);
+        opcion = leerEntero(0, 6);
 
-        // Todas menos cargar (1), agregar (6) y salir (0) necesitan jugadores
-        bool necesitaJugadores = (opcion != 0 && opcion != 1 && opcion != 6);
-        if (necesitaJugadores && registro.getCantidad() == 0) {
-            cout << "No hay jugadores. Carga el CSV con la opcion 1 o agrega uno con la opcion 6." << endl;
+        if (opcion >= 2 && registro.getCantidad() == 0) {
+            cout << "No hay jugadores. Primero carga el CSV con la opcion 1." << endl;
             continue;
         }
 
@@ -381,8 +235,7 @@ int main() {
             case 1: {
                 int cantidad = registro.cargarDesdeCSV(RUTA_CSV);
                 if (cantidad > 0) {
-                    cout << ">> Se cargaron " << cantidad << " jugadores en la lista y "
-                         << registro.getCantidadEnArbol() << " en el arbol" << endl;
+                    cout << ">> Se cargaron " << cantidad << " jugadores en la lista y en el arbol" << endl;
                 }
                 break;
             }
@@ -390,10 +243,7 @@ int main() {
             case 3: opcionOrdenar(registro); break;
             case 4: opcionFiltrar(registro); break;
             case 5: opcionBuscar(registro); break;
-            case 6: opcionAgregar(registro); break;
-            case 7: opcionActualizar(registro); break;
-            case 8: opcionEliminar(registro); break;
-            case 9: opcionArbol(registro); break;
+            case 6: opcionArbol(registro); break;
             case 0: cout << "Hasta luego!" << endl; break;
         }
     }

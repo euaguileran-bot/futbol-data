@@ -198,7 +198,7 @@ void Registro::mostrarOrdenInverso() const {
 void Registro::mostrarAlfabetico() const {
     mostrarEncabezado();
     arbol.inorden();
-    mostrarPie(arbol.contarNodos());
+    mostrarPie(lista.obtenerTamano());
 }
 
 void Registro::mostrarLista(const vector<Jugador>& jugadores, int cantidad) const {
@@ -222,22 +222,19 @@ int Registro::getCantidad() const {
     return lista.obtenerTamano();
 }
 
-int Registro::getCantidadEnArbol() const {
-    return arbol.contarNodos();
-}
-
 // ============================ Consultas ============================
 
-// O(n): búsqueda secuencial en la lista. Regresa la posición o -1.
-int Registro::buscarEnLista(string nombre, Jugador& encontrado, int& pasos) const {
+// O(n): búsqueda secuencial en la lista
+bool Registro::buscarEnLista(string nombre, Jugador& encontrado, int& pasos) const {
     // Jugador temporal que solo tiene el nombre: como los operadores de
     // Jugador comparan solo el nombre, es todo lo que se necesita para buscar
     Jugador buscado(nombre);
-    int posicion = lista.buscar(buscado, pasos);
-    if (posicion != -1) {
-        encontrado = lista.obtenerEnPosicion(posicion);
+    Jugador* resultado = lista.buscar(buscado, pasos);
+    if (resultado == nullptr) {
+        return false;
     }
-    return posicion;
+    encontrado = *resultado;   // "*resultado" es el jugador al que apunta
+    return true;
 }
 
 // O(h): búsqueda en el árbol
@@ -247,70 +244,9 @@ bool Registro::buscarEnArbol(string nombre, Jugador& encontrado, int& pasos) con
     if (resultado == nullptr) {
         return false;
     }
-    encontrado = *resultado;   // "*resultado" es el jugador al que apunta
+    encontrado = *resultado;
     return true;
 }
-
-// O(h)
-bool Registro::existeJugador(string nombre) const {
-    int pasos;
-    return arbol.buscar(Jugador(nombre), pasos) != nullptr;
-}
-
-// ============================ Cambios ============================
-
-// O(h): insertar en el árbol (revisa repetidos) + O(1) en la lista
-bool Registro::agregarJugador(const Jugador& nuevo, bool alInicio) {
-    if (!arbol.insertar(nuevo)) {
-        return false;   // ya existe un jugador con ese nombre
-    }
-    if (alInicio) {
-        lista.insertarAlInicio(nuevo);
-    } else {
-        lista.insertarAlFinal(nuevo);
-    }
-    return true;
-}
-
-// O(n): buscar la posición en la lista O(n), actualizarla O(n) y el árbol O(h)
-bool Registro::actualizarJugador(const Jugador& actualizado) {
-    int pasos;
-    int posicion = lista.buscar(actualizado, pasos);
-    if (posicion == -1) {
-        return false;
-    }
-    lista.actualizarEnPosicion(posicion, actualizado);
-    arbol.actualizar(actualizado);
-    return true;
-}
-
-// El árbol no tiene eliminación de nodos (no la hemos visto en clase), así
-// que al eliminar un jugador se vacía el árbol y se vuelve a llenar desde la
-// lista. Cuesta O(n·h) (n inserciones de O(h)) en lugar del O(h) que costaría
-// borrar un solo nodo, pero con 300 jugadores es instantáneo. Se insertan en
-// el orden de la lista, así que la raíz pasa a ser el primer jugador de la
-// lista y la forma (y la altura) del árbol puede cambiar un poco.
-void Registro::reconstruirArbol() {
-    arbol.vaciar();
-    vector<Jugador> jugadores = lista.aVector();
-    for (int i = 0; i < (int)jugadores.size(); i++) {
-        arbol.insertar(jugadores[i]);
-    }
-}
-
-// O(n·h): buscar y eliminar en la lista O(n) + reconstruir el árbol O(n·h)
-bool Registro::eliminarJugador(string nombre) {
-    int pasos;
-    int posicion = lista.buscar(Jugador(nombre), pasos);
-    if (posicion == -1) {
-        return false;
-    }
-    lista.eliminarEnPosicion(posicion);
-    reconstruirArbol();
-    return true;
-}
-
-// ============================ Información del árbol ============================
 
 // O(n)
 int Registro::alturaArbol() const {
@@ -329,7 +265,7 @@ void Registro::mostrarRecorrido(int tipo) const {
     } else {
         arbol.porNiveles();
     }
-    mostrarPie(arbol.contarNodos());
+    mostrarPie(lista.obtenerTamano());
 }
 
 // O(h)

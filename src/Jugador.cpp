@@ -1,21 +1,6 @@
 #include "Jugador.h"
 #include <iomanip>
 
-Jugador::Jugador() {
-    nombre = "";
-    equipo = "";
-    posicion = "";
-    edad = 0;
-    nacionalidad = "";
-    partidosJugados = 0;
-    partidosTitular = 0;
-    minutos = 0;
-    goles = 0;
-    asistencias = 0;
-    tarjetasAmarillas = 0;
-    tarjetasRojas = 0;
-}
-
 Jugador::Jugador(string nombre) {
     this->nombre = nombre;
     equipo = "";
@@ -62,14 +47,6 @@ int Jugador::getGoles() const { return goles; }
 int Jugador::getAsistencias() const { return asistencias; }
 int Jugador::getTarjetasAmarillas() const { return tarjetasAmarillas; }
 int Jugador::getTarjetasRojas() const { return tarjetasRojas; }
-
-void Jugador::setPartidosJugados(int partidosJugados) { this->partidosJugados = partidosJugados; }
-void Jugador::setPartidosTitular(int partidosTitular) { this->partidosTitular = partidosTitular; }
-void Jugador::setMinutos(int minutos) { this->minutos = minutos; }
-void Jugador::setGoles(int goles) { this->goles = goles; }
-void Jugador::setAsistencias(int asistencias) { this->asistencias = asistencias; }
-void Jugador::setTarjetasAmarillas(int tarjetasAmarillas) { this->tarjetasAmarillas = tarjetasAmarillas; }
-void Jugador::setTarjetasRojas(int tarjetasRojas) { this->tarjetasRojas = tarjetasRojas; }
 
 double Jugador::golesPor90Min() const {
     if (minutos == 0) {
