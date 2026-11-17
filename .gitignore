@@ -70,3 +70,6 @@ Testing/
 
 # Ejecutable del proyecto (g++ ... -o analizador)
 analizador
+
+# Respaldo que crea el programa al guardar
+data/jugadores_respaldo.csv
