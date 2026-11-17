@@ -4,6 +4,14 @@
 #include <fstream>
 #include <sstream>
 
+// Cabecera del CSV: se usa la misma al guardar para poder volver a cargarlo
+const string CABECERA_CSV = "nombre,equipo,posicion,edad,nacionalidad,partidos_jugados,"
+                            "partidos_titular,minutos,goles,asistencias,tarjetas_amarillas,tarjetas_rojas";
+
+Registro::Registro() {
+    cambiosSinGuardar = false;
+}
+
 // ============================ Catálogos ============================
 
 // O(k): lee un archivo de texto (k líneas) y guarda cada línea en 'destino'.
@@ -91,6 +99,7 @@ int Registro::cargarDesdeCSV(string ruta) {
 
     lista.vaciar();   // para no duplicar jugadores si se carga dos veces
     arbol.vaciar();
+    cambiosSinGuardar = false;
 
     string linea;
     getline(archivo, linea);   // se salta la cabecera
@@ -276,6 +285,138 @@ int Registro::nivelDe(string nombre) const {
 // O(h)
 vector<Jugador> Registro::ancestrosDe(string nombre) const {
     return arbol.ancestros(Jugador(nombre));
+}
+
+// ============================ Cambios ============================
+
+// O(h)
+bool Registro::existeJugador(string nombre) const {
+    int pasos;
+    return arbol.buscar(Jugador(nombre), pasos) != nullptr;
+}
+
+// O(h): insertar en el árbol (detecta nombres repetidos) + O(1) al final de la lista
+bool Registro::agregarJugador(const Jugador& nuevo) {
+    if (!arbol.insertar(nuevo)) {
+        return false;   // ya existe un jugador con ese nombre
+    }
+    lista.insertarAlFinal(nuevo);
+    cambiosSinGuardar = true;
+    return true;
+}
+
+// O(n): buscar en la lista O(n) + buscar en el árbol O(h). Las dos búsquedas
+// regresan un apuntador al jugador guardado, y por medio de él se reemplazan
+// sus datos. El nombre no cambia, así que el árbol sigue ordenado.
+bool Registro::actualizarJugador(const Jugador& actualizado) {
+    int pasos;
+    Jugador* enLista = lista.buscar(actualizado, pasos);
+    Jugador* enArbol = arbol.buscar(actualizado, pasos);
+    if (enLista == nullptr || enArbol == nullptr) {
+        return false;
+    }
+    *enLista = actualizado;
+    *enArbol = actualizado;
+    cambiosSinGuardar = true;
+    return true;
+}
+
+// El árbol no tiene eliminación de nodos (no la vimos en clase), así que al
+// eliminar un jugador se vacía el árbol (liberando cada nodo con delete) y se
+// vuelve a llenar desde la lista. Cuesta O(n·h) en lugar del O(h) que costaría
+// borrar un solo nodo, pero con 300 jugadores es instantáneo.
+void Registro::reconstruirArbol() {
+    arbol.vaciar();
+    vector<Jugador> jugadores = lista.aVector();
+    for (int i = 0; i < (int)jugadores.size(); i++) {
+        arbol.insertar(jugadores[i]);
+    }
+}
+
+// O(n·h): eliminar de la lista O(n) + reconstruir el árbol O(n·h)
+bool Registro::eliminarJugador(string nombre) {
+    if (!lista.eliminar(Jugador(nombre))) {
+        return false;
+    }
+    reconstruirArbol();
+    cambiosSinGuardar = true;
+    return true;
+}
+
+bool Registro::hayCambiosSinGuardar() const {
+    return cambiosSinGuardar;
+}
+
+// ============================ Guardar ============================
+
+// O(r + n): copia las r líneas del CSV actual al respaldo y luego escribe los
+// n jugadores de la lista. Si algo falla, avisa y regresa false; los datos en
+// memoria (lista y árbol) no se tocan, así que no se pierde nada.
+bool Registro::guardarEnCSV(string ruta, string rutaRespaldo) {
+    // 1) Respaldo: se copia el CSV actual línea por línea
+    ifstream original(ruta);
+    if (original.is_open()) {
+        cout << "Respaldando " << ruta << " en " << rutaRespaldo << "..." << endl;
+        ofstream respaldo(rutaRespaldo);
+        if (!respaldo.is_open()) {
+            cout << "Error: no se pudo crear el respaldo " << rutaRespaldo
+                 << ". No se guardo nada." << endl;
+            return false;
+        }
+        string linea;
+        while (getline(original, linea)) {
+            respaldo << linea << "\n";
+        }
+        respaldo.close();
+        original.close();
+    } else {
+        cout << "Aviso: no existe " << ruta << ", no hay nada que respaldar." << endl;
+    }
+
+    // 2) Se escribe toda la lista doble, con la misma cabecera y el mismo
+    // orden de columnas con que se lee
+    vector<Jugador> jugadores = lista.aVector();
+    cout << "Escribiendo la lista doble (" << jugadores.size() << " jugadores) en "
+         << ruta << "..." << endl;
+    ofstream archivo(ruta);
+    if (!archivo.is_open()) {
+        cout << "Error: no se pudo abrir " << ruta << " para escribir." << endl;
+        return false;
+    }
+    archivo << CABECERA_CSV << "\n";
+    for (int i = 0; i < (int)jugadores.size(); i++) {
+        const Jugador& j = jugadores[i];
+        archivo << j.getNombre() << "," << j.getEquipo() << "," << j.getPosicion() << ","
+                << j.getEdad() << "," << j.getNacionalidad() << ","
+                << j.getPartidosJugados() << "," << j.getPartidosTitular() << ","
+                << j.getMinutos() << "," << j.getGoles() << "," << j.getAsistencias() << ","
+                << j.getTarjetasAmarillas() << "," << j.getTarjetasRojas() << "\n";
+    }
+    archivo.close();
+    if (archivo.fail()) {
+        cout << "Error: no se pudo terminar de escribir " << ruta
+             << ". El respaldo sigue en " << rutaRespaldo << endl;
+        return false;
+    }
+
+    // 3) Verificación: se vuelve a abrir el archivo y se cuentan los jugadores
+    ifstream revision(ruta);
+    string linea;
+    int lineas = 0;
+    getline(revision, linea);   // cabecera
+    while (getline(revision, linea)) {
+        if (linea.size() > 0) {
+            lineas++;
+        }
+    }
+    if (lineas != (int)jugadores.size()) {
+        cout << "Error: el archivo quedo con " << lineas << " jugadores en lugar de "
+             << jugadores.size() << ". El respaldo sigue en " << rutaRespaldo << endl;
+        return false;
+    }
+
+    cambiosSinGuardar = false;
+    return true;
 }
 
 // ============================ Filtros ============================

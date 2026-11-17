@@ -14,13 +14,17 @@ private:
     ArbolBST<Jugador> arbol;     // índice por nombre para buscar rápido
     vector<string> equipos;      // leídos de data/equipos.txt
     vector<string> posiciones;   // leídos de data/posiciones.txt
+    bool cambiosSinGuardar;      // true después de agregar, actualizar o eliminar
 
     bool leerCatalogo(string ruta, vector<string>& destino);
     bool estaEnCatalogo(string valor, const vector<string>& catalogo) const;
     void mostrarEncabezado() const;
     void mostrarPie(int mostrados) const;
+    void reconstruirArbol();
 
 public:
+    Registro();
+
     // Catálogos (se cargan al iniciar el programa)
     bool cargarCatalogos(string rutaEquipos, string rutaPosiciones);
     vector<string> getEquipos() const;
@@ -45,6 +49,16 @@ public:
     void mostrarRecorrido(int tipo) const;   // 1 pre, 2 in, 3 post, 4 por niveles
     int nivelDe(string nombre) const;
     vector<Jugador> ancestrosDe(string nombre) const;
+
+    // Cambios (siempre dejan la lista y el árbol sincronizados)
+    bool existeJugador(string nombre) const;
+    bool agregarJugador(const Jugador& nuevo);
+    bool actualizarJugador(const Jugador& actualizado);
+    bool eliminarJugador(string nombre);
+
+    // Guardar: respalda el CSV actual y escribe toda la lista en el CSV
+    bool guardarEnCSV(string ruta, string rutaRespaldo);
+    bool hayCambiosSinGuardar() const;
 
     // Filtros (sobre una copia de la lista)
     vector<Jugador> filtrarPorEquipo(string equipo) const;

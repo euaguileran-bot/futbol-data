@@ -90,6 +90,35 @@ public:
         return nullptr;
     }
 
+    // O(n): busca desde la cabeza el nodo igual (==) y lo desconecta. Una vez
+    // encontrado, quitarlo es O(1) porque el nodo sabe quién es su anterior
+    // y su siguiente (en una lista simple habría que buscar al anterior).
+    bool eliminar(const T& valor) {
+        NodoLista<T>* actual = cabeza;
+        while (actual != nullptr && !(actual->dato == valor)) {
+            actual = actual->siguiente;
+        }
+        if (actual == nullptr) {
+            return false;   // no se encontró
+        }
+
+        // Se conecta el anterior con el siguiente, "saltándose" el nodo
+        if (actual->anterior != nullptr) {
+            actual->anterior->siguiente = actual->siguiente;
+        } else {
+            cabeza = actual->siguiente;   // era la cabeza
+        }
+        if (actual->siguiente != nullptr) {
+            actual->siguiente->anterior = actual->anterior;
+        } else {
+            cola = actual->anterior;      // era la cola
+        }
+
+        delete actual;
+        tamano--;
+        return true;
+    }
+
     // O(n): de la cabeza a la cola
     void mostrarAdelante() const {
         NodoLista<T>* actual = cabeza;

@@ -48,6 +48,14 @@ int Jugador::getAsistencias() const { return asistencias; }
 int Jugador::getTarjetasAmarillas() const { return tarjetasAmarillas; }
 int Jugador::getTarjetasRojas() const { return tarjetasRojas; }
 
+void Jugador::setPartidosJugados(int partidosJugados) { this->partidosJugados = partidosJugados; }
+void Jugador::setPartidosTitular(int partidosTitular) { this->partidosTitular = partidosTitular; }
+void Jugador::setMinutos(int minutos) { this->minutos = minutos; }
+void Jugador::setGoles(int goles) { this->goles = goles; }
+void Jugador::setAsistencias(int asistencias) { this->asistencias = asistencias; }
+void Jugador::setTarjetasAmarillas(int tarjetasAmarillas) { this->tarjetasAmarillas = tarjetasAmarillas; }
+void Jugador::setTarjetasRojas(int tarjetasRojas) { this->tarjetasRojas = tarjetasRojas; }
+
 double Jugador::golesPor90Min() const {
     if (minutos == 0) {
         return 0.0;

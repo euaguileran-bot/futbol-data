@@ -46,6 +46,17 @@ public:
     int getTarjetasAmarillas() const;
     int getTarjetasRojas() const;
 
+    // Setters de las estadísticas (para la opción "Actualizar").
+    // No hay setNombre: cambiar el nombre desacomodaría el árbol, que está
+    // ordenado por nombre.
+    void setPartidosJugados(int partidosJugados);
+    void setPartidosTitular(int partidosTitular);
+    void setMinutos(int minutos);
+    void setGoles(int goles);
+    void setAsistencias(int asistencias);
+    void setTarjetasAmarillas(int tarjetasAmarillas);
+    void setTarjetasRojas(int tarjetasRojas);
+
     // Atributo derivado: se calcula con goles y minutos, no se guarda
     double golesPor90Min() const;
 
